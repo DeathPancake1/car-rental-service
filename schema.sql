@@ -2,7 +2,7 @@ CREATE SCHEMA car_rental;
 use car_rental;
 
 CREATE TABLE car(
-    plate_id int NOT NULL,
+    plate_id varchar(50) NOT NULL,
     model varchar(100),
     `year` YEAR,
     `status` varchar(50),
