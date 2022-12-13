@@ -21,7 +21,6 @@ CREATE TABLE `user`(
 CREATE table admin(
     id int(15),
 	name varchar(15),
-    username varchar(15),
     `password` varchar(15),
     PRIMARY KEY (id)
 );
