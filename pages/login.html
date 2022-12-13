@@ -7,13 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action="POST" name="loginform" id="loginform" method="post">
         <label>Email</label><br>
-        <input type="text"><br>
+        <input type="text" name="email"><br>
         <label>password</label><br>
-        <input type="text"><br>
-        <button>login</button>
+        <input type="text" name="password"><br>
+        <span id="mailm"></span><br>
+        <button onclick="validateForm()" type="button">login</button>
         <button>register</button>
     </form>
+    <script src="login.js"></script>
 </body>
 </html>
