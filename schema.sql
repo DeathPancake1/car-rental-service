@@ -14,17 +14,20 @@ CREATE TABLE car_status(
     today date,
     `status` varchar(50),
     reserved varchar(50),
-    PRIMARY KEY (plate_id,today)
+    PRIMARY KEY (plate_id,today),
+     FOREIGN KEY (plate_id)  REFERENCES car(plate_id)
 );
 
 CREATE TABLE `user`(
     user_id int NOT NULL auto_increment,
+    `name` varchar(15),
     email varchar(100),
     `password` varchar(100),
     birthdate date,
-    licence varchar(100),
+    license varchar(100),
     PRIMARY KEY (user_id)
 );
+
 CREATE table admin(
     id int(15),
     email varchar(100),
