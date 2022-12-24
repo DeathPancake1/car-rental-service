@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+
 </head>
+
 <body>
+<div id="bg"></div>
+
     <form action="POST" name="loginform" id="loginform" method="post">
+
+
         <label>Email</label><br>
-        <input type="text" name="email"><br>
+        <input type="text" name="email" class="fields" required><br>
+
         <label>password</label><br>
-        <input type="password" name="password"><br>
+        <input type="password" name="password" class="fields" required><br>
+
         <span id="mailm"></span><br>
-        <button onclick="validateForm()" type="button">login</button>
-        <input class="buttons" type="button" id="signup" value="Sign Up" onclick="location.href = 'register.html';"/>
+
+
+
+        <button onclick="validateForm()" type="button" class="buttons"><span class="text">Login</span></button>
+        <br></br>
+
+
+        <label>Don't have an account?</label>
+        <input class="buttons" type="button" id="signup" value="Click to Sign Up" onclick="location.href = 'register.html';"/>
+
     </form>
-    <script src="login.js"></script>
+
+    <script src="login.js"></script> 
 </body>
 </html>
