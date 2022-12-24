@@ -11,4 +11,13 @@
         }
         return $html_res;
     }
+    function show_users($res){
+        $html_res = "";
+        while($row = mysqli_fetch_array($res)) {
+            $delete ="<br><input type='button' value='Delete' onclick='deleteUser(event)'>";
+            $html_res .= "<div id=".$row['user_id']." class='user_div'><label class='user_name'>".$row['name'] .'</label>' 
+            ."<label class='use_email'>".$row['email'] .'</label>' .$delete."</div><br>";
+        }
+        return $html_res;
+    }
 ?>

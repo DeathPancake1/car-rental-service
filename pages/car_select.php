@@ -19,4 +19,17 @@
         }
         echo $html_res;
     }
+    if($f=="searchUser"){
+        $search=$_POST['search'];
+        session_start();
+        $query="select * from user where user_id='".$search."' or `name`='".$search."' or email='".$search."' or birthdate='".$search."' or license='".$search."'";
+        $res=$conn->query($query);
+        $html_res=show_users($res);
+        echo $html_res;
+    }
+    if($f=="deleteUser"){
+        $id=$_POST['id'];
+        $query="delete from user where user_id='".$id."'";
+        $res=$conn->query($query);
+    }
 ?>
