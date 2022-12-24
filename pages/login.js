@@ -30,15 +30,17 @@ function validateForm(){
 function checkMail(){
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
+        console.log(xmlhttp.responseText.trim());
         if (xmlhttp.readyState == 4 ) {
             if ( xmlhttp.responseText.trim() == 'wrong' ){
                 document.getElementById("mailm").innerHTML="wrong email or password";
             }
             else if(  xmlhttp.responseText.trim() == 'admin' ){
-                document.getElementById("mailm").innerHTML="enta ragl zo2lot w admin";
+                window.location.href="home_admin.php";
             }
             else if( xmlhttp.responseText.trim() == 'user' ){
-                document.getElementById("mailm").innerHTML="enta ragl zo2lot w user";
+                console.log("hello");
+                window.location.href="home.php";
             }
         }
     }

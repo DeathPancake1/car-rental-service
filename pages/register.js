@@ -47,8 +47,8 @@ function checkForm(){
                 if ( xmlhttp.responseText.trim() == 'wrong' ){
                     document.getElementById("error").innerHTML="This email already exists.";
                 }
-                else if(  xmlhttp.responseText.trim() == 'zy el fol' ){
-                    document.getElementById("error").innerHTML="enta ragl zo2lot w user w ntn";
+                else if(  xmlhttp.responseText.trim() == 'Signed in' ){
+                    document.getElementById("error").innerHTML="Signed in";
                 }
                 else { console.log(xmlhttp.responseText.trim());}
             }

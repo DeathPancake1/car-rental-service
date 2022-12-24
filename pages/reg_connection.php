@@ -6,6 +6,7 @@
     $password=$_POST['pass'];
     $birthdate=$_POST['birth'];
     $license=$_POST['lic'];
+    $password = md5($password);
 
     $query2="select * from user where email='".$email."'";
     $res=$conn->query($query2);
@@ -17,6 +18,10 @@
     else {$query = "insert into user (name,email,password,birthdate,license) values ('".$name."','".$email."','".$password."','".$birthdate."','".$license."')";
         $res=$conn->query($query);
         $row = $res->fetch_assoc();
-        echo "zy el fol";}
+        if($row){
+            echo $row["user_id"];
+            $_SESSION['user_id'] = $row["user_id"];
+        }
+    }
 
 ?>

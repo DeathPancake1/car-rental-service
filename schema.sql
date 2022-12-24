@@ -32,7 +32,7 @@ CREATE table admin(
     id int(15),
     email varchar(100),
 	name varchar(15),
-    `password` varchar(15),
+    `password` varchar(50),
     PRIMARY KEY (id)
 );
 CREATE TABLE reservation(
