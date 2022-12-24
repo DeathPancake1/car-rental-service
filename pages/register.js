@@ -48,7 +48,7 @@ function checkForm(){
                     document.getElementById("error").innerHTML="This email already exists.";
                 }
                 else if(  xmlhttp.responseText.trim() == 'Signed in' ){
-                    document.getElementById("error").innerHTML="Signed in";
+                    window.location.href="home.php";
                 }
                 else { console.log(xmlhttp.responseText.trim());}
             }

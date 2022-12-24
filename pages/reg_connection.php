@@ -17,10 +17,9 @@
     }
     else {$query = "insert into user (name,email,password,birthdate,license) values ('".$name."','".$email."','".$password."','".$birthdate."','".$license."')";
         $res=$conn->query($query);
-        $row = $res->fetch_assoc();
-        if($row){
-            echo $row["user_id"];
-            $_SESSION['user_id'] = $row["user_id"];
+        if($res){
+            $_SESSION['user_name'] = $name;
+            echo 'Signed in';
         }
     }
 
