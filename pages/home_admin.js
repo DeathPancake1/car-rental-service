@@ -65,3 +65,11 @@ function reservationSearch(){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
+function showForm(id){
+    var element = document.getElementById(id);
+    element.style.display="block";
+}
+function hideForm(id){
+    var element = document.getElementById(id);
+    element.style.display="none";
+}

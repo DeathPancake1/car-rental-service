@@ -12,9 +12,26 @@
     <title>Admin Home</title>
 </head>
 <body>
+    <div id="addCarForm" style="
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        cursor: pointer;"
+    >
+        <form>
+            <div onclick="hideForm('addCarForm')">X</div>
+        </form>
+    </div>
     <label id='user_id'><?php echo $admin_name; ?></label>
     <input type='text' name='search' placeholder='search' id="search_bar">
-    <input type="button" value='Add Car' onclick="carSearch()">
+    <input type="button" value='Add Car' onclick="showForm('addCarForm')">
     <input type="button" value='Reservation Within Period (Car and Customer)' onclick="carSearch()">
     <input type="button" value='Reservation Within Period (Customer)' onclick="carSearch()">
     <input type="button" value='Car Status on a day' onclick="carSearch()">
