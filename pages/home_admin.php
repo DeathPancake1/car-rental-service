@@ -23,7 +23,7 @@
     <a href='logout.php'>Logout</a><br>
     <input type="button" value='Car Search' onclick="carSearch()">
     <input type="button" value='User Search' onclick="userSearch()">
-    <input type="button" value='Reservation Search' onclick="carSearch()">
+    <input type="button" value='Reservation Search' onclick="reservationSearch()">
     <br>
     <div id="results"></div>
 </body>

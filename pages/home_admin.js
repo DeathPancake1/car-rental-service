@@ -52,3 +52,16 @@ function deleteUser(e){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
+function reservationSearch(){
+    var search_bar = document.getElementById("search_bar").value;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById("results").innerHTML=xmlhttp.responseText.trim();
+        }
+    }
+    var querystr="search="+search_bar;
+    xmlhttp.open("POST","car_select.php?f=searchReservation",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}

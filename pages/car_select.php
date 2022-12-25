@@ -32,4 +32,15 @@
         $query="delete from user where user_id='".$id."'";
         $res=$conn->query($query);
     }
+    if($f=="searchReservation"){
+        $search=$_POST['search'];
+        session_start();
+        $query="select * from (reservation natural join user) natural join car where user_id='".$search."' 
+        or `name`='".$search."' or email='".$search."' or birthdate='".$search."' or license='".$search."'
+        or model='".$search."' or `year`='".$search."' or plate_id='".$search."' or price='".$search."'
+        or reserve_date='".$search."'";
+        $res=$conn->query($query);
+        $html_res=show_reservations($res);
+        echo $html_res;
+    }
 ?>
