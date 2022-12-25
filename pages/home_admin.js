@@ -120,3 +120,73 @@ function searchByStartEnd(){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
+function searchByStartEndCustomer(){
+    var startdate = document.forms["reservationCForm"]["startdate"].value;
+    var enddate = document.forms["reservationCForm"]["enddate"].value;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById("resultsreservationWPC").innerHTML=xmlhttp.responseText.trim();
+        }
+    }
+    var querystr="startdate="+startdate+"&enddate="+enddate;
+    xmlhttp.open("POST","car_select.php?f=searchByStartEndCustomer",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}
+function carStatusDay(){
+    var day = document.forms["carStatusForm"]["day"].value;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById("resultCarStatus").innerHTML=xmlhttp.responseText.trim();
+        }
+    }
+    var querystr="day="+day;
+    xmlhttp.open("POST","car_select.php?f=carStatusDay",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}
+function deleteCarStatus(){
+    e = e || window.event;
+    var elem_id=e.target.parentElement.id;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById(elem_id).remove();
+        }
+    }
+    var querystr="id="+elem_id;
+    xmlhttp.open("POST","car_select.php?f=deleteStatus",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}
+function customerReservation(){
+    var id = document.forms["customerReservationForm"]["customer_id"].value;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById("resultCustomerReservation").innerHTML=xmlhttp.responseText.trim();
+        }
+    }
+    var querystr="id="+id;
+    xmlhttp.open("POST","car_select.php?f=customerReservation",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}
+function updateStatus(){
+    var status = document.forms["updateStatusForm"]["status"].value;
+    var reserved = document.forms["updateStatusForm"]["reserved"].value;
+    var plate_id = document.forms["updateStatusForm"]["plate_id"].value;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            console.log(xmlhttp.responseText.trim());
+            hideForm("updateStatus");
+        }
+    }
+    var querystr="status="+status+"&reserved="+reserved+"&plate_id="+plate_id;
+    xmlhttp.open("POST","car_select.php?f=updateStatus",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}

@@ -56,7 +56,6 @@
     if($f=="searchByStartEnd"){
         $startdate=$_POST['startdate'];
         $enddate=$_POST['enddate'];
-        session_start();
         $query="select * from reservation natural join user natural join car where reserve_date between '".$startdate."' and '".$enddate."'";
         $res=$conn->query($query);
         $html_res=show_reservations($res);
@@ -65,6 +64,40 @@
     if($f=="deleteReservation"){
         $id=$_POST['id'];
         $query="delete from reservation where reservation_number='".$id."'";
+        $res=$conn->query($query);
+    }
+    if($f=="searchByStartEndCustomer"){
+        $startdate=$_POST['startdate'];
+        $enddate=$_POST['enddate'];
+        $query="select * from reservation natural join car where reserve_date between '".$startdate."' and '".$enddate."'";
+        $res=$conn->query($query);
+        $html_res=show_reservations_customer($res);
+        echo $html_res;
+    }
+    if($f=="carStatusDay"){
+        $day=$_POST['day'];
+        $query="Select plate_id,reserved,Max(today),model,`year`,price,today from car_status natural join car where today<= '".$day."' GROUP by plate_id";
+        $res=$conn->query($query);
+        $html_res=show_car_status($res);
+        echo $html_res;
+    }
+    if($f=="deleteStatus"){
+        $id=$_POST['id'];
+        $query="delete from car_status where plate_id='".$id."'";
+        $res=$conn->query($query);
+    }
+    if($f=="customerReservation"){
+        $id=$_POST['id'];
+        $query="Select * from reservation natural join car natural join user where user_id= '".$id."'";
+        $res=$conn->query($query);
+        $html_res=show_reservations($res);
+        echo $html_res;
+    }
+    if($f=="updateStatus"){
+        $plate_id=$_POST['plate_id'];
+        $reserved=$_POST['reserved'];
+        $stat=$_POST['status'];
+        $query="insert into car_status (plate_id,today,status,reserved) values ('".$plate_id."',NOW(),'".$stat."','".$reserved."')";
         $res=$conn->query($query);
     }
 ?>
