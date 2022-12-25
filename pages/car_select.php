@@ -53,13 +53,18 @@
         $res=$conn->query($query);
         $res=$conn->query($query2);
     }
-    if($f=="searchbystartend"){
+    if($f=="searchByStartEnd"){
         $startdate=$_POST['startdate'];
         $enddate=$_POST['enddate'];
         session_start();
-        $query="select * from reservation as r  natural join car as c where reserve_date between '".$startdate."' and '".$enddate."'";
+        $query="select * from reservation natural join user natural join car where reserve_date between '".$startdate."' and '".$enddate."'";
         $res=$conn->query($query);
         $html_res=show_reservations($res);
         echo $html_res;
+    }
+    if($f=="deleteReservation"){
+        $id=$_POST['id'];
+        $query="delete from reservation where reservation_number='".$id."'";
+        $res=$conn->query($query);
     }
 ?>

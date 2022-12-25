@@ -65,6 +65,20 @@ function reservationSearch(){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
+function deleteReservation(e){
+    e = e || window.event;
+    var elem_id=e.target.parentElement.id;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById(elem_id).remove();
+        }
+    }
+    var querystr="id="+elem_id;
+    xmlhttp.open("POST","car_select.php?f=deleteReservation",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}
 function showForm(id){
     var element = document.getElementById(id);
     element.style.display="block";
@@ -92,9 +106,9 @@ function addcar(){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
-function searchbystartend(){
-    var startdate = document.getElementById("startdate").value;
-    var enddate = document.getElementById("enddate").value;
+function searchByStartEnd(){
+    var startdate = document.forms["reservationCCForm"]["startdate"].value;
+    var enddate = document.forms["reservationCCForm"]["enddate"].value;
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState == 4 ) {
@@ -102,7 +116,7 @@ function searchbystartend(){
         }
     }
     var querystr="startdate="+startdate+"&enddate="+enddate;
-    xmlhttp.open("POST","car_select.php?f=searchbystartend",true);
+    xmlhttp.open("POST","car_select.php?f=searchByStartEnd",true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }

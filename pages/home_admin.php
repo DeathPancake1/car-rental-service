@@ -53,14 +53,14 @@
         z-index: 2;
         cursor: pointer;"
     >
-        <form>
+        <form id="reservationCCForm">
             <div onclick="hideForm('reservationWPCC')">X</div>
             <form>
             <label>start date:</label>
-            <input id="startdate" type="text" required><br>
+            <input name="startdate" type="text" required><br>
             <label>end date:</label>
-            <input type="text" required><br>
-            <input id="enddate" type="button" onclick="searchbystartend()" value="search">
+            <input name="enddate" type="text" required><br>
+            <input type="button" onclick="searchByStartEnd()" value="search">
             <div id="resultsreservationWPCC"></div>
             </form>
         </form>
@@ -68,7 +68,7 @@
     <label id='user_id'><?php echo $admin_name; ?></label>
     <input type='text' name='search' placeholder='search' id="search_bar">
     <input type="button" value='Add Car' onclick="showForm('addCarForm')">
-    <input type="button" value='Reservation Within Period (Car and Customer)' onclick="carSearch()">
+    <input type="button" value='Reservation Within Period (Car and Customer)' onclick="showForm('reservationWPCC')">
     <input type="button" value='Reservation Within Period (Customer)' onclick="carSearch()">
     <input type="button" value='Car Status on a day' onclick="carSearch()">
     <input type="button" value='Reservation of Customer' onclick="carSearch()">
