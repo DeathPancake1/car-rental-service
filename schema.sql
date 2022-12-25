@@ -41,9 +41,19 @@ CREATE TABLE reservation(
     return_date date,
     user_id int NOT null AUTO_INCREMENT,
     reservation_number varchar(100) unique,
-    payment varchar(50),
     plate_id varchar(50) NOT null,
     PRIMARY KEY(user_id,plate_id),
     FOREIGN KEY (plate_id)  REFERENCES car(plate_id),
     FOREIGN KEY (user_id )REFERENCES user(user_id)
+);
+CREATE TABLE payment(
+    reservation_number varchar(100),
+    user_id int NOT null,
+    plate_id varchar(50) NOT null,
+    payment_time datetime,
+    amount varchar(100),
+    method varchar(100),
+    PRIMARY KEY(reservation_number,user_id),
+    FOREIGN KEY (reservation_number)  REFERENCES reservation(reservation_number),
+    FOREIGN KEY (user_id,plate_id )  REFERENCES reservation(user_id,plate_id)
 );

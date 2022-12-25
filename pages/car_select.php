@@ -100,4 +100,12 @@
         $query="insert into car_status (plate_id,today,status,reserved) values ('".$plate_id."',NOW(),'".$stat."','".$reserved."')";
         $res=$conn->query($query);
     }
+    if($f=="dailyPayments"){
+        $startdate=$_POST['startdate'];
+        $enddate=$_POST['enddate'];
+        $query="select * from payment where payment_time between '".$startdate."' and '".$enddate."'";
+        $res=$conn->query($query);
+        $html_res=show_reservations_customer($res);
+        echo $html_res;
+    }
 ?>

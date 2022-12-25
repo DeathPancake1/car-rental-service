@@ -163,6 +163,31 @@
             </form>
         </form>
     </div>
+    <div id="dailyPayments" style="
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        cursor: pointer;"
+    >
+        <form id="dailyPaymentsForm">
+            <div onclick="hideForm('dailyPayments')">X</div>
+            <form>
+            <label>Start Date:</label>
+            <input name="startdate" type="text" required><br>
+            <label>End Date:</label>
+            <input name="enddate" type="text" required><br>
+            <input type="button" onclick="dailyPayments()" value="Search">
+            <div id="resultDailyPayments"></div>
+            </form>
+        </form>
+    </div>
     <label id='user_id'><?php echo $admin_name; ?></label>
     <input type='text' name='search' placeholder='search' id="search_bar">
     <input type="button" value='Add Car' onclick="showForm('addCarForm')">
@@ -171,7 +196,7 @@
     <input type="button" value='Car Status on a day' onclick="showForm('carStatus')">
     <input type="button" value='Reservation of Customer' onclick="showForm('customerReservation')">
     <input type="button" value='Update Car Status' onclick="showForm('updateStatus')">
-    <input type="button" value='Daily Payments' onclick="carSearch()">
+    <input type="button" value='Daily Payments' onclick="showForm('dailyPayments')">
     <a href='logout.php'>Logout</a><br>
     <input type="button" value='Car Search' onclick="carSearch()">
     <input type="button" value='User Search' onclick="userSearch()">

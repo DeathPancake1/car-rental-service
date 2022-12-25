@@ -190,3 +190,17 @@ function updateStatus(){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
+function dailyPayments(){
+    var startdate = document.forms["dailyPaymentsForm"]["startdate"].value;
+    var enddate = document.forms["dailyPaymentsForm"]["enddate"].value;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById("resultDailyPayments").innerHTML=xmlhttp.responseText.trim();
+        }
+    }
+    var querystr="startdate="+startdate+"&enddate="+enddate;
+    xmlhttp.open("POST","car_select.php?f=dailyPayments",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}
