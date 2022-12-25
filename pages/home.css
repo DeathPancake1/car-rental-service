@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+body {
+    font-family: 'Lato', sans-serif;
+    color: #4A4A4A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(144deg,#AF40FF, #140f35 50%,#00DDEB);
+  }
+
+  .label{
+    position:absolute; 
+    left:50px; 
+    top:20px; 
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .logout{
+    position:absolute; 
+    right:50px; 
+    top:20px; 
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .logout:focus{
+    background-color: rgb(242, 237, 237);
+  }
+
+  .search{
+    position:absolute; 
+    top:60px; 
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .fields{
+    font-family: inherit;
+    width: 100%;
+    outline: none;
+    background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);  border: none;
+    display: block;
+    padding: 0.9rem 0.7rem;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 30px;
+    color: #4A4A4A;
+    text-indent: 40px;
+  }
+
+  .button{
+    align-items: center;
+    background-image: linear-gradient(144deg,#312f33, #140f35 50%,#16053c);
+	color: white;
+	border-style: outset;
+	border-color: #0066A2;
+	height: 50px;
+	display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 15px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 3px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 900;
+	font: bold15px arial,sans-serif;
+	text-shadow: none;
+  }

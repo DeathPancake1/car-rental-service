@@ -3,36 +3,38 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Register Page</title>
+    <link rel="stylesheet" href="register.css">
     </head>
     <body>
-        <label>Register:</label>
+        <div id="bg"></div>
         <form action="POST" name="register_form" id="register_form" method="post" onsubmit="checkForm()">
             <div>
                 <label>Name:</label>
-                <input name="name" type="text">
+                <input name="name" type="text" class="fields">
             </div>
             <div>
                 <label>Email:</label>
-                <input name="email" type="text">
+                <input name="email" type="text" class="fields">
             </div>
             <div>
                 <label>Password:</label>
-                <input name="pass" type="password">
+                <input name="pass" type="password" class="fields">
             </div>
             <div>
                 <label>Confirm Password:</label>
-                <input name="cpass" type="password">
+                <input name="cpass" type="password" class="fields">
             </div>
             <div>
                 <label>Birthdate:</label>
-                <input name="birth" type="text">
+                <input name="birth" type="text" class="fields">
             </div>
             <div>
-                <label>Licence:</label>
-                <input name="lic" type="text">
+                <label>License:</label>
+                <input name="lic" type="text" class="fields">
             </div>
-            <input type="button" value="Go" onclick="checkForm()"/>
+            <br></br>
+            <input type="button" value="Go" class="buttons" onclick="checkForm()"/>
             <label id="error"></label>
         </form>
     </body>

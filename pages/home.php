@@ -10,14 +10,30 @@
 ?>
 <!DOCTYPE html>
 <head>
-    <title>Document</title>
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+
 </head>
+
 <body>
-    <label id='user_id'><?php echo $user_name; ?></label>
-    <input type='text' name='search' placeholder='search' id="search_bar">
-    <input type="button" value='go' onclick="carSearch()">
-    <a href='logout.php'>Logout</a><br>
+<div id="bg"></div>
+    <div class="label">
+        <img src="../Profile-PNG-Clipart.png" width="40" height="35" class="image">
+        <label id='user_id'><?php echo $user_name; ?></label>
+    </div>
+
+    <div class="search">
+        <input type='text'class="fields" name='search' placeholder='search' id="search_bar">
+        <!-- <img src="../download.png" width="40" height="35" class="image" onclick="carSearch()"> -->
+        <input type="button" value='go'class="button" onclick="carSearch()">
+    </div>
+
+    <div class="logout">
+        <a href='logout.php'>Logout</a><br>
+    </div>
+
     <div id="cars"><?php echo $html_res; ?></div>
+
 </body>
 <script src='home.js'></script>
 <style></style>
