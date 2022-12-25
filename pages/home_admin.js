@@ -92,3 +92,17 @@ function addcar(){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
+function searchbystartend(){
+    var startdate = document.getElementById("startdate").value;
+    var enddate = document.getElementById("enddate").value;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById("resultsreservationWPCC").innerHTML=xmlhttp.responseText.trim();
+        }
+    }
+    var querystr="startdate="+startdate+"&enddate="+enddate;
+    xmlhttp.open("POST","car_select.php?f=searchbystartend",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}

@@ -53,4 +53,13 @@
         $res=$conn->query($query);
         $res=$conn->query($query2);
     }
+    if($f=="searchbystartend"){
+        $startdate=$_POST['startdate'];
+        $enddate=$_POST['enddate'];
+        session_start();
+        $query="select * from reservation as r  natural join car as c where reserve_date between '".$startdate."' and '".$enddate."'";
+        $res=$conn->query($query);
+        $html_res=show_reservations($res);
+        echo $html_res;
+    }
 ?>

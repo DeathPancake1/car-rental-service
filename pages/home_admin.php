@@ -40,6 +40,31 @@
             <input type="button" value='Add Car' onclick="addcar()">
         </form>
     </div>
+    <div id="reservationWPCC" style="
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        cursor: pointer;"
+    >
+        <form>
+            <div onclick="hideForm('reservationWPCC')">X</div>
+            <form>
+            <label>start date:</label>
+            <input id="startdate" type="text" required><br>
+            <label>end date:</label>
+            <input type="text" required><br>
+            <input id="enddate" type="button" onclick="searchbystartend()" value="search">
+            <div id="resultsreservationWPCC"></div>
+            </form>
+        </form>
+    </div>
     <label id='user_id'><?php echo $admin_name; ?></label>
     <input type='text' name='search' placeholder='search' id="search_bar">
     <input type="button" value='Add Car' onclick="showForm('addCarForm')">
