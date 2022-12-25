@@ -25,8 +25,19 @@
         z-index: 2;
         cursor: pointer;"
     >
-        <form>
+        <form style="background-color:white;" id="carForm">
             <div onclick="hideForm('addCarForm')">X</div>
+            <label>Plate ID:</label>
+            <input type="text" name='plate_id' required><br>
+            <label>Model:</label>
+            <input type="text" name='model' required><br>
+            <label>Year:</label>
+            <input type="text" name='year' required><br>
+            <label>Price:</label>
+            <input type="text" name='price' required><br>
+            <label>Status:</label>
+            <input type="text" name='status' required><br>
+            <input type="button" value='Add Car' onclick="addcar()">
         </form>
     </div>
     <label id='user_id'><?php echo $admin_name; ?></label>

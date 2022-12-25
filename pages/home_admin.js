@@ -73,3 +73,22 @@ function hideForm(id){
     var element = document.getElementById(id);
     element.style.display="none";
 }
+function addcar(){
+    var plate_id = document.forms["carForm"]["plate_id"].value;
+    var status = document.forms["carForm"]["status"].value;
+    var model = document.forms["carForm"]["model"].value;
+    var year = document.forms["carForm"]["year"].value;
+    var price = document.forms["carForm"]["price"].value;
+    console.log(plate_id+model+year+price+status);
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            console.log(xmlhttp.responseText.trim());
+            hideForm("addCarForm");
+        }
+    }
+    var querystr="plate_id="+plate_id+"&model="+model+"&year="+year+"&price="+price+"&status="+status;
+    xmlhttp.open("POST","car_select.php?f=carAdd",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}

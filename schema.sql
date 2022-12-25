@@ -11,7 +11,7 @@ CREATE TABLE car(
 
 CREATE TABLE car_status(
     plate_id varchar(50) NOT NULL,
-    today date,
+    today datetime,
     `status` varchar(50),
     reserved varchar(50),
     PRIMARY KEY (plate_id,today),
