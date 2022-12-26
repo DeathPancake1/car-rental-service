@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+  }
+  body{
+    background-color: #F9F9F9;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  input[type=button]{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: medium;
+  }
+  input[type=text]{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: medium;
+  }
+.searchwith3buttons{
+    margin:auto;
+    width:50%;
+}
+#mainsearch{
+    display:block;
+    width:75%;
+    margin:auto;
+    margin-bottom: 0rem;
+    height:3rem;
+}
+#searchbuttonsdiv{
+    width:70%;
+    margin:auto;
+}
+.searchbuttons{
+    width:32%;
+    height:3rem;
+    background-color: rgb(18, 34, 57);;
+    border-style:none ;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    color: white;
+}
+#firstfourbutns{
+    width:95%;
+    margin: auto;
+}
+.foursearch{
+    width:24%;
+    height:3rem;
+    background-color: rgb(18, 34, 57);;
+    border-style:none ;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    text-align: center;
+    color:white;
+}
+#fooall{
+    position:fixed;
+    width:100%;
+    bottom:0;
+    display: grid;
+    grid-template-columns: auto 80% auto;
+    grid-template-areas: 'm x n';
+    background-color: black;
+}
+#results{
+    border-style: solidl;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+}

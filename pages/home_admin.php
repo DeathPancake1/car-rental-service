@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="home_admin.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -180,7 +181,7 @@
             <div onclick="hideForm('dailyPayments')">X</div>
             <form>
             <label>Start Date:</label>
-            <input name="startdate" type="text" required><br>
+            <input name="startdate" type="text" required><br> 
             <label>End Date:</label>
             <input name="enddate" type="text" required><br>
             <input type="button" onclick="dailyPayments()" value="Search">
@@ -188,19 +189,32 @@
             </form>
         </form>
     </div>
-    <label id='user_id'><?php echo $admin_name; ?></label>
-    <input type='text' name='search' placeholder='search' id="search_bar">
-    <input type="button" value='Add Car' onclick="showForm('addCarForm')">
-    <input type="button" value='Reservation Within Period (Car and Customer)' onclick="showForm('reservationWPCC')">
-    <input type="button" value='Reservation Within Period (Customer)' onclick="showForm('reservationWPC')">
-    <input type="button" value='Car Status on a day' onclick="showForm('carStatus')">
-    <input type="button" value='Reservation of Customer' onclick="showForm('customerReservation')">
-    <input type="button" value='Update Car Status' onclick="showForm('updateStatus')">
-    <input type="button" value='Daily Payments' onclick="showForm('dailyPayments')">
-    <a href='logout.php'>Logout</a><br>
-    <input type="button" value='Car Search' onclick="carSearch()">
-    <input type="button" value='User Search' onclick="userSearch()">
-    <input type="button" value='Reservation Search' onclick="reservationSearch()">
+    <h1 id='user_id'style='text-align:center;'><?php echo "Hello ".$admin_name; ?></h1>
+    <div class="searchwith3buttons">
+        <input type='text' id="mainsearch" name='search' placeholder='search' id="search_bar"><br>
+        <div id="searchbuttonsdiv">
+            <input class="searchbuttons" type="button" value='Search for cars' onclick="carSearch()">
+            <input class="searchbuttons" type="button" value='Search for user' onclick="userSearch()">
+            <input class="searchbuttons" type="button" value='Search for reservations' onclick="reservationSearch()"><br>
+        </div>
+    </div>
+    <h2 style="margin-left:0.4em;">For more functions:</h2><br>
+    <div id="firstfourbutns">
+        <input class="foursearch" type="button" value='Add Car' onclick="showForm('addCarForm')">
+        <input class="foursearch" type="button" value='Reservation Within Period (Car and Customer)' onclick="showForm('reservationWPCC')">
+        <input class="foursearch" type="button" value='Reservation Within Period (Customer only)' onclick="showForm('reservationWPC')">
+        <input class="foursearch" type="button" value='Status of cars in a day' onclick="showForm('carStatus')">
+    </div></br>
+    <div class="searchwith3buttons">
+        <input class="searchbuttons" type="button" value='Customer activity' onclick="showForm('customerReservation')">
+        <input class="searchbuttons" type="button" value='Update Car Status' onclick="showForm('updateStatus')">
+        <input class="searchbuttons" type="button" value='Daily Payments' onclick="showForm('dailyPayments')">
+    </div>
+    <div id="fooall">
+        <h1 style="grid-area:x;text-align:center;color:white;">VROOM</h1>
+        <a style="position:absolute;bottom:25%;grid-area:n;color:white;text-decoration:none;" href='logout.php'>Logout</a>
+
+    </div>
     <br>
     <div id="results"></div>
 </body>
