@@ -107,7 +107,7 @@
         }
         return $html_res;
     }
-    function show_reservations($res){
+    function show_reservations_customer($res){
         $html_res = "";
         while($row = mysqli_fetch_array($res)) {
             $delete ="<br><input type='button' value='Delete' class='reservation_action' onclick='deleteReservation(event)'>";
