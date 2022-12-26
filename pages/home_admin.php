@@ -13,160 +13,104 @@
     <title>Admin Home</title>
 </head>
 <body>
-    <div id="addCarForm">
-        <form class="carForm">
-            <div style="margin-top: 0.2em;margin-left: 0.2em;font-size:1.3rem" onclick="hideForm('addCarForm')">X</div>
-            <div class='formdiv'>
-                <label>Plate ID:</label><br>
-                <input type="text" name='plate_id' required><br>
-                <label>Model:</label><br>
-                <input type="text" name='model' required><br>
-                <label>Year:</label><br>
-                <input type="text" name='year' required><br>
-                <label>Price:</label><br>
-                <input type="text" name='price' required><br>
-                <label>Status:</label><br>
-                <input type="text" name='status' required><br>
-            <input class='formbtn' type="button" value='Add Car' onclick="addcar()">
-            </div>
-            
-        </form>
-    </div>
-    <div id="reservationWPCC"  >
-        <form class="carForm">
-            <div onclick="hideForm('reservationWPCC')">X</div>
-            <div class="formdiv">
-                <label>start date:</label><br>
-                <input name="startdate" type="text" required><br>
-                <label>end date:</label><br>
-                <input name="enddate" type="text" required><br>
-                <input class='formbtn' type="button" onclick="searchByStartEnd()" value="search">
-            </div>
-            <div id="resultsreservationWPCC"></div>
-        </form>
-    </div>
-    <div id="reservationWPC" style="
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        cursor: pointer;"
-    >
-        <form id="reservationCForm">
-            <div onclick="hideForm('reservationWPC')">X</div>
-            <form>
-            <label>start date:</label>
-            <input name="startdate" type="text" required><br>
-            <label>end date:</label>
-            <input name="enddate" type="text" required><br>
-            <input type="button" onclick="searchByStartEndCustomer()" value="search">
-            <div id="resultsreservationWPC"></div>
+    <div id="hidden_forms">
+        <div id="addCarForm">
+            <form id="carForm">
+                <button class="close" onclick="hideForm('addCarForm')"></button>
+                <div class='formdiv'>
+                    <label>Plate ID:</label><br>
+                    <input type="text" name='plate_id' required><br>
+                    <label>Model:</label><br>
+                    <input type="text" name='model' required><br>
+                    <label>Year:</label><br>
+                    <input type="text" name='year' required><br>
+                    <label>Price:</label><br>
+                    <input type="text" name='price' required><br>
+                    <label>Status:</label><br>
+                    <input type="text" name='status' required><br>
+                <input class='formbtn' type="button" value='Add Car' onclick="addcar()">
+                </div>
+                
             </form>
-        </form>
-    </div>
-    <div id="carStatus" style="
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        cursor: pointer;"
-    >
-        <form id="carStatusForm">
-            <div onclick="hideForm('carStatus')">X</div>
-            <form>
-            <label>Date:</label>
-            <input name="day" type="text" required><br>
-            <input type="button" onclick="carStatusDay()" value="search">
-            <div id="resultCarStatus"></div>
+        </div>
+        <div id="reservationWPCC">
+            <form id="reservationCCForm">
+                <button class="close" onclick="hideForm('reservationWPCC')"></button>
+                <div class="formdiv">
+                    <label>start date:</label><br>
+                    <input name="startdate" type="text" required><br>
+                    <label>end date:</label><br>
+                    <input name="enddate" type="text" required><br>
+                    <input class='formbtn' type="button" onclick="searchByStartEnd()" value="search">
+                </div>
+                <div id="resultsreservationWPCC"></div>
             </form>
-        </form>
-    </div>
-    <div id="customerReservation" style="
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        cursor: pointer;"
-    >
-        <form id="customerReservationForm">
-            <div onclick="hideForm('customerReservation')">X</div>
-            <form>
-            <label>Customer ID:</label>
-            <input name="customer_id" type="text" required><br>
-            <input type="button" onclick="customerReservation()" value="search">
-            <div id="resultCustomerReservation"></div>
+        </div>
+        <div id="reservationWPC">
+            <form id="reservationCForm">
+                <button class="close" onclick="hideForm('reservationWPC')"></button>
+                <div class="formdiv">
+                    <label>start date:</label><br>
+                    <input name="startdate" type="text" required><br>
+                    <label>end date:</label><br>
+                    <input name="enddate" type="text" required><br>
+                    <input class='formbtn' type="button" onclick="searchByStartEndCustomer()" value="search">
+                </div>
+                <div id="resultsreservationWPC"></div>
+                </form>
             </form>
-        </form>
-    </div>
-    <div id="updateStatus" style="
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        cursor: pointer;"
-    >
-        <form id="updateStatusForm">
-            <div onclick="hideForm('updateStatusForm')">X</div>
-            <form>
-            <label>Plate ID:</label>
-            <input name="plate_id" type="text" required><br>
-            <label>Status:</label>
-            <input name="status" type="text" required><br>
-            <label>Reserved:</label>
-            <input name="reserved" type="text" required><br>
-            <input type="button" onclick="updateStatus()" value="Update">
-            <div id="resultUpdateStatus"></div>
+        </div>
+        <div id="carStatus">
+            <form id="carStatusForm">
+                <button class="close" onclick="hideForm('carStatus')"></button>
+                <div class="formdiv">
+                    <label>Date:</label><br>
+                    <input name="day" type="text" required><br>
+                    <input class='formbtn' type="button" onclick="carStatusDay()" value="search">
+                </div>
+                <div id="resultCarStatus"></div>
+                </form>
             </form>
-        </form>
-    </div>
-    <div id="dailyPayments" style="
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        cursor: pointer;"
-    >
-        <form id="dailyPaymentsForm">
-            <div onclick="hideForm('dailyPayments')">X</div>
-            <form>
-            <label>Start Date:</label>
-            <input name="startdate" type="text" required><br> 
-            <label>End Date:</label>
-            <input name="enddate" type="text" required><br>
-            <input type="button" onclick="dailyPayments()" value="Search">
-            <div id="resultDailyPayments"></div>
+        </div>
+        <div id="customerReservation">
+            <form id="customerReservationForm">
+                <button class="close" onclick="hideForm('customerReservation')"></button>
+                <div class="formdiv">
+                    <label>Customer ID:</label><br>
+                    <input name="customer_id" type="text" required><br>
+                    <input class='formbtn' type="button" onclick="customerReservation()" value="search">
+                    <div id="resultCustomerReservation"></div>
+                </div>
             </form>
-        </form>
+        </div>
+        <div id="updateStatus">
+            <form id="updateStatusForm">
+                <button class="close" onclick="hideForm('updateStatus')"></button>
+                <div class="formdiv">
+                    <label>Plate ID:</label><br>
+                    <input name="plate_id" type="text" required><br>
+                    <label>Status:</label><br>
+                    <input name="status" type="text" required><br>
+                    <label>Reserved:</label><br>
+                    <input name="reserved" type="text" required><br>
+                    <input class='formbtn' type="button" onclick="updateStatus()" value="Update">
+                    <div id="resultUpdateStatus"></div>
+                </div>
+            </form>
+        </div>
+        <div id="dailyPayments">
+            <form id="dailyPaymentsForm">
+                <button class="close" onclick="hideForm('dailyPayments')"></button>
+                <div class="formdiv">
+                    <label>Start Date:</label><br> 
+                    <input name="startdate" type="text" required><br> 
+                    <label>End Date:</label><br> 
+                    <input name="enddate" type="text" required><br>
+                    <input class='formbtn' type="button" onclick="dailyPayments()" value="Search">
+                    <div id="resultDailyPayments"></div>
+                </div>
+            </form>
+        </div>
     </div>
     <h1 id='user_id'style='text-align:center;'><?php echo "Hello ".$admin_name; ?></h1>
     <div class="searchwith3buttons">
