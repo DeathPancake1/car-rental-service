@@ -13,57 +13,36 @@
     <title>Admin Home</title>
 </head>
 <body>
-    <div id="addCarForm" style="
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        cursor: pointer;"
-    >
-        <form style="background-color:white;" id="carForm">
-            <div onclick="hideForm('addCarForm')">X</div>
-            <label>Plate ID:</label>
-            <input type="text" name='plate_id' required><br>
-            <label>Model:</label>
-            <input type="text" name='model' required><br>
-            <label>Year:</label>
-            <input type="text" name='year' required><br>
-            <label>Price:</label>
-            <input type="text" name='price' required><br>
-            <label>Status:</label>
-            <input type="text" name='status' required><br>
-            <input type="button" value='Add Car' onclick="addcar()">
+    <div id="addCarForm">
+        <form class="carForm">
+            <div style="margin-top: 0.2em;margin-left: 0.2em;font-size:1.3rem" onclick="hideForm('addCarForm')">X</div>
+            <div class='formdiv'>
+                <label>Plate ID:</label><br>
+                <input type="text" name='plate_id' required><br>
+                <label>Model:</label><br>
+                <input type="text" name='model' required><br>
+                <label>Year:</label><br>
+                <input type="text" name='year' required><br>
+                <label>Price:</label><br>
+                <input type="text" name='price' required><br>
+                <label>Status:</label><br>
+                <input type="text" name='status' required><br>
+            <input class='formbtn' type="button" value='Add Car' onclick="addcar()">
+            </div>
+            
         </form>
     </div>
-    <div id="reservationWPCC" style="
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        cursor: pointer;"
-    >
-        <form id="reservationCCForm">
+    <div id="reservationWPCC"  >
+        <form class="carForm">
             <div onclick="hideForm('reservationWPCC')">X</div>
-            <form>
-            <label>start date:</label>
-            <input name="startdate" type="text" required><br>
-            <label>end date:</label>
-            <input name="enddate" type="text" required><br>
-            <input type="button" onclick="searchByStartEnd()" value="search">
+            <div class="formdiv">
+                <label>start date:</label><br>
+                <input name="startdate" type="text" required><br>
+                <label>end date:</label><br>
+                <input name="enddate" type="text" required><br>
+                <input class='formbtn' type="button" onclick="searchByStartEnd()" value="search">
+            </div>
             <div id="resultsreservationWPCC"></div>
-            </form>
         </form>
     </div>
     <div id="reservationWPC" style="

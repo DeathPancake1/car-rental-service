@@ -69,3 +69,39 @@
     grid-template-columns: auto auto auto;
     justify-content: space-around;
 }
+#addCarForm,#reservationWPCC{
+    position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        cursor: pointer;
+        align-items: center;
+}
+.carForm{
+    position: absolute;
+    left: 20%;
+    top:20%;
+    width:60%;
+    margin: auto;
+    background-color: #F9F9F9;
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-width: 450px;
+    overflow:auto;
+}
+.formdiv{
+    width:30%;
+    margin:auto;
+    padding-bottom: 1.5rem;
+}
+.formbtn{
+    display: block;
+    margin-top: 1rem;
+    padding: 0.3em;
+}
