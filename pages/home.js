@@ -38,3 +38,18 @@ function reserveCar(){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
+function pay(){
+    var method = document.forms["paymentForm"]["method"].value;
+    var reservation_number = document.forms["paymentForm"]["reservation_number"].value;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            console.log(xmlhttp.responseText.trim());
+            hideForm("payment");
+        }
+    }
+    var querystr="method="+method+"&reservation_number="+reservation_number;
+    xmlhttp.open("POST","car_select.php?f=payCar",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}

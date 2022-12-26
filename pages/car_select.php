@@ -136,4 +136,23 @@
         $res=$conn->query($query);
         $res2=$conn->query($query2);
     }
+    if($f=="payCar"){
+        session_start();
+        $method=$_POST['method'];
+        $reservation_number=$_POST['reservation_number'];
+        $user_name=$_SESSION['user_name'];
+        $query="select plate_id,user_id from reservation where reservation_number='".$reservation_number."'";
+        $res=$conn->query($query);
+        $row = $res->fetch_assoc();
+        $plate_id = $row['plate_id'];
+        $user_id = $row['user_id'];
+        echo $plate_id.$user_id;
+        $query0="select price from car where plate_id='".$plate_id."'";
+        $res=$conn->query($query0);
+        $price = $res->fetch_assoc();
+        $price = $price['price'];
+        $query1="Insert into payment (reservation_number,user_id,payment_time,amount,method) values('".$reservation_number."',
+        '".$user_id."',NOW(),'".$price."','".$method."')";
+        $res2=$conn->query($query1);
+    }
 ?>
