@@ -6,6 +6,10 @@
             if($type=="admin"){
                 $delete ="<br><input type='button' value='Delete' onclick='deleteCar(event)'>";
             }
+            else{
+                $click="showForm(event,`reservation`)";
+                $delete="<br><input type='button' value='Reserve' onclick='".$click."'>";
+            }
             $html_res .= "<div id=".$row['plate_id']." class='car_div'><label class='car_model'>".$row['model'] .'</label>' 
             ."<label class='car_price'>".$row['price'] .'</label>' .$delete."</div><br>";
         }

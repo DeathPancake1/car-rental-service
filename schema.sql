@@ -39,15 +39,15 @@ CREATE TABLE reservation(
 	reserve_date date,
     pickup_date date,
     return_date date,
-    user_id int NOT null AUTO_INCREMENT,
-    reservation_number varchar(100) unique,
+    user_id int NOT null,
+    reservation_number int NOT null AUTO_INCREMENT,
     plate_id varchar(50) NOT null,
     PRIMARY KEY(user_id,plate_id),
     FOREIGN KEY (plate_id)  REFERENCES car(plate_id),
     FOREIGN KEY (user_id )REFERENCES user(user_id)
 );
 CREATE TABLE payment(
-    reservation_number varchar(100),
+    reservation_number int NOT null AUTO_INCREMENT,
     user_id int NOT null,
     plate_id varchar(50) NOT null,
     payment_time datetime,

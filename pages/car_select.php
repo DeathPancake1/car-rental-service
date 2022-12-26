@@ -9,12 +9,16 @@
     }
     if($f=="searchCar"){
         $search=$_POST['search'];
-        session_start();
-        $query="select * from car where model='".$search."' or `year`='".$search."' or plate_id='".$search."' or price='".$search."'";
-        $res=$conn->query($query);
-        if(isset($_SESSION['admin_name'])){
+        $u = $_GET["u"];
+        if($u=="admin"){
+            $query="select * from car where model='".$search."' or `year`='".$search."' or plate_id='".$search."' or price='".$search."'";
+            $res=$conn->query($query);
             $html_res=show_cars($res,"admin");   
         }else{
+            $query="select `year`,plate_id,model,price from car where (model='".$search."' or `year`='".$search."' 
+            or plate_id='".$search."' or price='".$search."') and plate_id in (Select plate_id from car_status where `status`='active' and reserved='NO'
+            and today in(select MAX(today) from car_status GROUP by plate_id) group by plate_id)";
+            $res=$conn->query($query);
             $html_res=show_cars($res,"user");  
         }
         echo $html_res;
@@ -63,8 +67,15 @@
     }
     if($f=="deleteReservation"){
         $id=$_POST['id'];
+        $query0="select plate_id from reservation where reservation_number='".$id."'";
+        $res0=$conn->query($query0);
+        $row = $res0->fetch_assoc();
+        $row = $row['plate_id'];
         $query="delete from reservation where reservation_number='".$id."'";
-        $res=$conn->query($query);
+        $res1=$conn->query($query);
+        $query2="insert into car_status (plate_id,today,`status`,reserved) values('".$row."',NOW(),'active','NO')";
+        $res2=$conn->query($query2);
+        echo $res0;
     }
     if($f=="searchByStartEndCustomer"){
         $startdate=$_POST['startdate'];
@@ -76,7 +87,7 @@
     }
     if($f=="carStatusDay"){
         $day=$_POST['day'];
-        $query="Select plate_id,reserved,Max(today),model,`year`,price,today from car_status natural join car where today<= '".$day."' GROUP by plate_id";
+        $query="Select plate_id,reserved,`status`,model,price,`year` from car_status natural join car where today in(select MAX(today) from car_status where today<=".$day." GROUP by plate_id) group by plate_id";
         $res=$conn->query($query);
         $html_res=show_car_status($res);
         echo $html_res;
@@ -107,5 +118,22 @@
         $res=$conn->query($query);
         $html_res=show_reservations_customer($res);
         echo $html_res;
+    }
+    if($f=="reserveCar"){
+        session_start();
+        $user_name=$_SESSION['user_name'];
+        $qu = "Select user_id from user where name='".$user_name."'";
+        $res=$conn->query($qu);
+        $row = $res->fetch_assoc();
+        $row = $row['user_id'];
+        $pickup_date=$_POST['pickup_date'];
+        $return_date=$_POST['return_date'];
+        $reserve_date=$_POST['reserve_date'];
+        $car_id=$_POST['id'];
+        $query="Insert into reservation (reserve_date,pickup_date,return_date,user_id,plate_id) 
+        values('".$reserve_date."','".$pickup_date."','".$return_date."','".$row."','".$car_id."')";
+        $query2="insert into car_status (plate_id,today,status,reserved) values ('".$car_id."',NOW(),'active','YES')";
+        $res=$conn->query($query);
+        $res2=$conn->query($query2);
     }
 ?>

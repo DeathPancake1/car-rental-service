@@ -7,7 +7,7 @@ function carSearch(){
         }
     }
     var querystr="search="+search_bar;
-    xmlhttp.open("POST","car_select.php?f=searchCar",true);
+    xmlhttp.open("POST","car_select.php?f=searchCar&u=admin",true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
@@ -71,6 +71,7 @@ function deleteReservation(e){
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState == 4 ) {
+            console.log(xmlhttp.responseText.trim());
             document.getElementById(elem_id).remove();
         }
     }
