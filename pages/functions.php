@@ -151,22 +151,62 @@
     function show_car_status($res){
         $html_res = "";
         while($row = mysqli_fetch_array($res)) {
-            $delete ="<br><input type='button' value='Delete' onclick='deleteCarStatus(event)'>";
-            $html_res .= "<div id=".$row['plate_id']." class='car_status_div'><label class='status_date'>".$row['today'] .'</label>' 
-            ."<label class='car_price'>".$row['price'] .'</label>'."<label class='car_model'>".$row['model'] 
-            .'</label>'."<label class='status_reserved'>".$row['reserved'] 
-            .'</label>' .$delete."</div><br>";
+            $delete="<br><input type='button' value='Delete' class='status_action' onclick='deleteCarStatus(event)'>";
+            $html_res .= "<div id=".$row['plate_id']." class='car_status_div'>".
+                            "<img class='car_status_img' src='../car_images/".$row['plate_id'].".png'/>".
+                            "<div>".
+                                "<label class='car_status_label'>"."Status" .'</label><br>'.
+                                "<label class='car_status car_status_label_value'>".$row['status'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='car_status_label'>"."Plate ID" .'</label><br>'.
+                                "<label class='car_status_plate_id car_status_label_value'>".$row['plate_id'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='car_status_label'>"."Year" .'</label><br>'.
+                                "<label class='car_status_year car_status_label_value'>".$row['year'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='car_status_label'>"."Model" .'</label><br>'.
+                                "<label class='car_status_model car_status_label_value'>".$row['model'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='car_status_label'>"."Price" .'</label><br>'.
+                                "<label class='car_status_price car_status_label_value'>".$row['price'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='car_status_label'>"."Reserved" .'</label><br>'.
+                                "<label class='car_status_reserved car_status_label_value'>".$row['reserved'] .'</label>'.
+                            "</div>".
+                $delete."</div><br>";
         }
         return $html_res;
     }
     function show_payments($res){
         $html_res = "";
         while($row = mysqli_fetch_array($res)) {
-            $html_res .= "<div class='payment_div'><label class='payment_date'>".$row['payment_time'] .'</label>' 
-            ."<label class='payment_amount'>".$row['amount'] .'</label>'."<label class='payment_method'>".$row['method'] 
-            .'</label>'."<label class='payment_reservation_number'>".$row['reservation_number'] 
-            .'</label>' ."<label class='payment_user_id'>".$row['user_id'] 
-            .'</label>'."</div><br>";
+            $html_res .= "<div class='payment_div'>".
+                            "<div>".
+                                "<label class='payment_label'>"."Payment Date" .'</label><br>'.
+                                "<label class='payment_date payment_label_value'>".$row['payment_time'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='payment_label'>"."Amount" .'</label><br>'.
+                                "<label class='payment_amount payment_label_value'>".$row['amount'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='payment_label'>"."Method" .'</label><br>'.
+                                "<label class='payment_method payment_label_value'>".$row['method'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='payment_label'>"."Reservation Number" .'</label><br>'.
+                                "<label class='payment_reservation_number payment_label_value'>".$row['reservation_number'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='payment_label'>"."User ID" .'</label><br>'.
+                                "<label class='payment_user_id payment_label_value'>".$row['user_id'].'</label>'.
+                            "</div>".
+                        "</div><br>";
         }
         return $html_res;
     }

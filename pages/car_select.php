@@ -86,7 +86,7 @@
     }
     if($f=="carStatusDay"){
         $day=$_POST['day'];
-        $query="Select plate_id,reserved,`status`,model,price,`year` from car_status natural join car where today in(select MAX(today) from car_status where today<=".$day." GROUP by plate_id) group by plate_id";
+        $query="Select plate_id,reserved,`status`,model,price,`year` from car_status natural join car where today in(select MAX(today) from car_status where today<='".$day."' GROUP by plate_id) group by plate_id";
         $res=$conn->query($query);
         $html_res=show_car_status($res);
         echo $html_res;

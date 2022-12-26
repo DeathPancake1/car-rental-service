@@ -95,7 +95,6 @@
                     <label>Reserved:</label><br>
                     <input name="reserved" type="text" required><br>
                     <input class='formbtn' type="button" onclick="updateStatus()" value="Update">
-                    <div id="resultUpdateStatus"></div>
                 </div>
             </form>
         </div>
@@ -108,8 +107,8 @@
                     <label>End Date:</label><br> 
                     <input name="enddate" type="text" required><br>
                     <input class='formbtn' type="button" onclick="dailyPayments()" value="Search">
-                    <div id="resultDailyPayments"></div>
                 </div>
+                <div id="resultDailyPayments"></div>
             </form>
         </div>
     </div>
