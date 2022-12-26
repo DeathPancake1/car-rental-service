@@ -37,17 +37,18 @@
         while($row = mysqli_fetch_array($res)) {
             $delete ="<br><input type='button' value='Delete' class='user_action' onclick='deleteUser(event)'>";
             $html_res .= "<div id=".$row['user_id']." class='user_div'>".
+                            "<img class='user_img' src='../user_images/".$row['user_id'].".png'/>".
                             "<div>".
                                 "<label class='user_label'>"."User Name" .'</label><br>'.
-                                "<label class='user_name'>".$row['name'] .'</label>'.
+                                "<label class='user_name user_label_value'>".$row['name'] .'</label>'.
                             "</div>".
                             "<div>".
                                 "<label class='user_label'>"."Email" .'</label><br>'.
-                                "<label class='user_email'>".$row['email'] .'</label>'.
+                                "<label class='user_email user_label_value'>".$row['email'] .'</label>'.
                             "</div>".
                             "<div>".
                                 "<label class='user_label'>"."User ID" .'</label><br>'.
-                                "<label class='user_id'>".$row['user_id'] .'</label>'.
+                                "<label class='user_id user_label_value'>".$row['user_id'] .'</label>'.
                             "</div>".
                 $delete."</div><br>";
         }
@@ -58,7 +59,6 @@
         while($row = mysqli_fetch_array($res)) {
             $delete ="<br><input type='button' value='Delete' class='reservation_action' onclick='deleteReservation(event)'>";
             $html_res .= "<div id=".$row['reservation_number']." class='reservation_div'>".
-                            "<img class='reservation_img' src='../car_images/".$row['plate_id'].".png'/>".
                             "<div>".
                                 "<label class='reservation_label'>"."User Name" .'</label><br>'.
                                 "<label class='reservation_name reservation_label_value'>".$row['name'] .'</label>'.
@@ -112,7 +112,6 @@
         while($row = mysqli_fetch_array($res)) {
             $delete ="<br><input type='button' value='Delete' class='reservation_action' onclick='deleteReservation(event)'>";
             $html_res .= "<div id=".$row['reservation_number']." class='reservation_div'>".
-                            "<img class='reservation_img' src='../car_images/".$row['plate_id'].".png'/>".
                             "<div>".
                                 "<label class='reservation_label'>"."Plate ID" .'</label><br>'.
                                 "<label class='reservation_plate_id reservation_label_value'>".$row['plate_id'] .'</label>'.

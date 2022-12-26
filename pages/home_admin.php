@@ -80,8 +80,8 @@
                     <label>Customer ID:</label><br>
                     <input name="customer_id" type="text" required><br>
                     <input class='formbtn' type="button" onclick="customerReservation()" value="search">
-                    <div id="resultCustomerReservation"></div>
                 </div>
+                <div id="resultCustomerReservation"></div>
             </form>
         </div>
         <div id="updateStatus">

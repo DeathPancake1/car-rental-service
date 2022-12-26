@@ -1,4 +1,4 @@
-.car_div{
+.car_div,.user_div,.reservation_div{
     display: flex;
     flex-direction: row;
     background-color:#eeeeee;
@@ -6,27 +6,37 @@
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-
+    margin-bottom: 1rem;
 }
-.car_img{
+.car_img,.user_img{
     width: 16rem;
     height: 10rem;
 }
-.car_div > div{
+.car_div > div ,.user_div > div,.reservation_div > div{
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.car_div .car_label{
+.reservation_div > div{
+    padding: 1%;
+}
+.car_div .car_label,.user_div .user_label{
     font-size: 2rem;
     font-weight: bold;
 }
-.car_div .car_label_value{
+.reservation_div .reservation_label{
+    font-size: 120%;
+    font-weight: bold;
+}
+.car_div .car_label_value,.user_div .user_label_value{
     font-size: 1.5rem;
 }
-.car_action{
+.reservation_div .reservation_label_value{
+    font-size: 120%;
+}
+.car_action,.user_action,.reservation_action{
     height: 3rem;;
     font-size: 1.3rem;
     font-weight: bold;
