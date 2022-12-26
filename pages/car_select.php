@@ -74,8 +74,7 @@
         $query="delete from reservation where reservation_number='".$id."'";
         $res1=$conn->query($query);
         $query2="insert into car_status (plate_id,today,`status`,reserved) values('".$row."',NOW(),'active','NO')";
-        $res2=$conn->query($query2);
-        echo $res0;
+        $res2=$conn->query($query2); 
     }
     if($f=="searchByStartEndCustomer"){
         $startdate=$_POST['startdate'];
@@ -101,7 +100,7 @@
         $id=$_POST['id'];
         $query="Select * from reservation natural join car natural join user where user_id= '".$id."'";
         $res=$conn->query($query);
-        $html_res=show_reservations($res);
+        $html_res=show_reservations_customer($res);
         echo $html_res;
     }
     if($f=="updateStatus"){

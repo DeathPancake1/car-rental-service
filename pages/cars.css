@@ -1,0 +1,33 @@
+.car_div{
+    display: flex;
+    flex-direction: row;
+    background-color:#eeeeee;
+    border: solid transparent 1px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+
+}
+.car_img{
+    width: 16rem;
+    height: 10rem;
+}
+.car_div > div{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.car_div .car_label{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.car_div .car_label_value{
+    font-size: 1.5rem;
+}
+.car_action{
+    height: 3rem;;
+    font-size: 1.3rem;
+    font-weight: bold;
+}

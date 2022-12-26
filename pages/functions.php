@@ -4,14 +4,31 @@
         while($row = mysqli_fetch_array($res)) {
             $delete='';
             if($type=="admin"){
-                $delete ="<br><input type='button' value='Delete' onclick='deleteCar(event)'>";
+                $delete ="<br><input type='button' value='Delete' class='car_action' onclick='deleteCar(event)'>";
             }
             else{
                 $click="showForm(event,`reservation`)";
-                $delete="<br><input type='button' value='Reserve' onclick='".$click."'>";
+                $delete="<br><input type='button' value='Reserve' class='car_action' onclick='".$click."'>";
             }
-            $html_res .= "<div id=".$row['plate_id']." class='car_div'><label class='car_model'>".$row['model'] .'</label>' 
-            ."<label class='car_price'>".$row['price'] .'</label>' .$delete."</div><br>";
+            $html_res .= "<div id=".$row['plate_id']." class='car_div'>".
+                            "<img class='car_img' src='../car_images/".$row['plate_id'].".png'/>".
+                            "<div>".
+                                "<label class='car_label'>"."Plate ID" .'</label><br>'.
+                                "<label class='car_plate_id car_label_value'>".$row['plate_id'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='car_label'>"."Year" .'</label><br>'.
+                                "<label class='car_year car_label_value'>".$row['year'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='car_label'>"."Model" .'</label><br>'.
+                                "<label class='car_model car_label_value'>".$row['model'] .'</label>'.
+                            "</div>".
+                            "<div>".
+                                "<label class='car_label'>"."Price" .'</label><br>'.
+                                "<label class='car_price car_label_value'>".$row['price'] .'</label>'.
+                            "</div>".
+                $delete."</div><br>";
         }
         return $html_res;
     }

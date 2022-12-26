@@ -13,7 +13,7 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="home.css">
-
+    <link rel="stylesheet" href="cars.css">
 </head>
 
 <body>

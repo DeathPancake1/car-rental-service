@@ -65,9 +65,10 @@
 }
 #results{
     border-style: solidl;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #hidden_forms > div{
     position: fixed;
