@@ -116,7 +116,7 @@
         $enddate=$_POST['enddate'];
         $query="select * from payment where payment_time between '".$startdate."' and '".$enddate."'";
         $res=$conn->query($query);
-        $html_res=show_reservations_customer($res);
+        $html_res=show_payments($res);
         echo $html_res;
     }
     if($f=="reserveCar"){

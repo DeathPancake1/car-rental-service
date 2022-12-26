@@ -49,7 +49,6 @@ CREATE TABLE reservation(
 CREATE TABLE payment(
     reservation_number int NOT null AUTO_INCREMENT,
     user_id int NOT null,
-    plate_id varchar(50) NOT null,
     payment_time datetime,
     amount varchar(100),
     method varchar(100),

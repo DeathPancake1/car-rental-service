@@ -56,4 +56,15 @@
         }
         return $html_res;
     }
+    function show_payments($res){
+        $html_res = "";
+        while($row = mysqli_fetch_array($res)) {
+            $html_res .= "<div class='payment_div'><label class='payment_date'>".$row['payment_time'] .'</label>' 
+            ."<label class='payment_amount'>".$row['amount'] .'</label>'."<label class='payment_method'>".$row['method'] 
+            .'</label>'."<label class='payment_reservation_number'>".$row['reservation_number'] 
+            .'</label>' ."<label class='payment_user_id'>".$row['user_id'] 
+            .'</label>'."</div><br>";
+        }
+        return $html_res;
+    }
 ?>
