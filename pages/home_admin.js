@@ -1,5 +1,5 @@
 function carSearch(){
-    var search_bar = document.getElementById("search_bar").value;
+    var search_bar = document.getElementById("mainsearch").value;
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState == 4 ) {
@@ -26,7 +26,7 @@ function deleteCar(e){
     xmlhttp.send(querystr);
 }
 function userSearch(){
-    var search_bar = document.getElementById("search_bar").value;
+    var search_bar = document.getElementById("mainsearch").value;
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState == 4 ) {
@@ -53,7 +53,7 @@ function deleteUser(e){
     xmlhttp.send(querystr);
 }
 function reservationSearch(){
-    var search_bar = document.getElementById("search_bar").value;
+    var search_bar = document.getElementById("mainsearch").value;
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState == 4 ) {

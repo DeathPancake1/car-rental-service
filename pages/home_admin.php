@@ -170,7 +170,7 @@
     </div>
     <h1 id='user_id'style='text-align:center;'><?php echo "Hello ".$admin_name; ?></h1>
     <div class="searchwith3buttons">
-        <input type='text' id="mainsearch" name='search' placeholder='search' id="search_bar"><br>
+        <input type='text' id="mainsearch" name='search' placeholder='search'><br>
         <div id="searchbuttonsdiv">
             <input class="searchbuttons" type="button" value='Search for cars' onclick="carSearch()">
             <input class="searchbuttons" type="button" value='Search for user' onclick="userSearch()">
