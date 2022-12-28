@@ -3,7 +3,7 @@
     session_start();
     $user_name = $_SESSION['user_name'];
     $conn=mysqli_connect('127.0.0.1','root','','car_rental');
-    $query="select `year`,plate_id,model,price from car where plate_id in (Select plate_id from car_status where `status`='active' and reserved='NO'
+    $query="select `year`,plate_id,model,price from car where plate_id in (Select plate_id from car_status where `status`='active'
     and today in(select MAX(today) from car_status where today<=NOW() GROUP by plate_id) group by plate_id)";
     $res=$conn->query($query);
     $html_res=show_cars($res,"user");
@@ -14,6 +14,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="cars.css">
+    <link rel="stylesheet" href="home_admin.css">
 </head>
 
 <body>
@@ -31,15 +32,14 @@
         z-index: 2;
         cursor: pointer;"
     >
-        <form id="reservationForm">
-            <div onclick="hideForm('reservation')">X</div>
-            <label>Reservation date:</label>
-            <input name="reserve_date" type="text" required><br>
-            <label>Return date:</label>
-            <input name="return_date" type="text" required><br>
+        <form id="reservationForm" method="POST">
+            <button class="close" onclick="hideForm('reservation')"></button>
             <label>Pickup date:</label>
             <input name="pickup_date" type="text" required><br>
-            <input type="button" onclick="reserveCar()" value="search">
+            <label>Return date:</label>
+            <input name="return_date" type="text" required><br>
+            <input type="button" onclick="reserveCar()" value="Reserve">
+            <label id="reserve_result"></label>
         </form>
     </div>
     <div id="payment" style="
@@ -55,13 +55,11 @@
         z-index: 2;
         cursor: pointer;"
     >
-        <form id="paymentForm">
-            <div onclick="hideForm('payment')">X</div>
+        <form id="paymentForm" method="POST">
+            <button class="close" onclick="hideForm('payment')"></button>
             <label>Payment Method:</label>
             <input name="method" type="text" required><br>
-            <label>Reservation Number:</label>
-            <input name="reservation_number" type="text" required><br>
-            <input type="button" onclick="pay()" value="search">
+            <div id="payment_result"></div>
         </form>
     </div>
     <div class="label">
@@ -73,7 +71,7 @@
         <input type='text'class="fields" name='search' placeholder='search' id="search_bar">
         <!-- <img src="../download.png" width="40" height="35" class="image" onclick="carSearch()"> -->
         <input type="button" value='go'class="button" onclick="carSearch()">
-        <input type="button" value='Pay'class="button" onclick="showForm(event,'payment')">
+        <input type="button" value='Pay'class="button" onclick="showForm(event,'payment');showRes()">
     </div>
 
     <div class="logout">

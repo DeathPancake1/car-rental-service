@@ -107,10 +107,17 @@
         }
         return $html_res;
     }
-    function show_reservations_customer($res){
+    function show_reservations_customer($res,$type){
         $html_res = "";
         while($row = mysqli_fetch_array($res)) {
-            $delete ="<br><input type='button' value='Delete' class='reservation_action' onclick='deleteReservation(event)'>";
+            $delete='';
+            if($type=="admin"){
+                $delete ="<br><input type='button' value='Delete' class='reservation_action' onclick='deleteReservation(event)'>";
+            }
+            else{
+                $click="pay(event)";
+                $delete="<br><input type='button' value='Pay' class='reservation_action' onclick='".$click."'>";
+            }
             $html_res .= "<div id=".$row['reservation_number']." class='reservation_div'>".
                             "<div>".
                                 "<label class='reservation_label'>"."Plate ID" .'</label><br>'.

@@ -21,9 +21,11 @@
     }
     if($row2){
         $_SESSION['user_name'] = $row2["name"];
+        $_SESSION['user_id'] = $row2["user_id"];
     }
     if($row){
         $_SESSION['admin_name'] = $row["name"];
+        $_SESSION['admin_id'] = $row["id"];
     }
  
 ?>

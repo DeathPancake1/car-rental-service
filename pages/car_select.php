@@ -16,7 +16,7 @@
             $html_res=show_cars($res,"admin");   
         }else{
             $query="select `year`,plate_id,model,price from car where (model='".$search."' or `year`='".$search."' 
-            or plate_id='".$search."' or price='".$search."') and plate_id in (Select plate_id from car_status where `status`='active' and reserved='NO'
+            or plate_id='".$search."' or price='".$search."') and plate_id in (Select plate_id from car_status where `status`='active'
             and today in(select MAX(today) from car_status where today<=NOW() GROUP by plate_id) group by plate_id)";
             $res=$conn->query($query);
             $html_res=show_cars($res,"user");  
@@ -84,7 +84,7 @@
         $enddate=$_POST['enddate'];
         $query="select * from reservation natural join car natural join reserve_status where reserve_date between '".$startdate."' and '".$enddate."'";
         $res=$conn->query($query);
-        $html_res=show_reservations_customer($res);
+        $html_res=show_reservations_customer($res,"admin");
         echo $html_res;
     }
     if($f=="carStatusDay"){
@@ -104,7 +104,7 @@
         $id=$_POST['id'];
         $query="Select * from reservation natural join car natural join user natural join reserve_status where user_id= '".$id."'";
         $res=$conn->query($query);
-        $html_res=show_reservations_customer($res);
+        $html_res=show_reservations_customer($res,"admin");
         echo $html_res;
     }
     if($f=="updateStatus"){
@@ -124,38 +124,64 @@
     }
     if($f=="reserveCar"){
         session_start();
-        $user_name=$_SESSION['user_name'];
-        $qu = "Select user_id from user where name='".$user_name."'";
-        $res=$conn->query($qu);
-        $row = $res->fetch_assoc();
-        $row = $row['user_id'];
+        $user_id = $_SESSION['user_id'];
         $pickup_date=$_POST['pickup_date'];
         $return_date=$_POST['return_date'];
-        $reserve_date=$_POST['reserve_date'];
         $car_id=$_POST['id'];
-        $query="Insert into reservation (reserve_date,pickup_date,return_date,user_id,plate_id) 
-        values('".$reserve_date."','".$pickup_date."','".$return_date."','".$row."','".$car_id."')";
-        $query2="insert into car_status (plate_id,today,status,reserved) values ('".$car_id."',NOW(),'active','YES')";
+        $query0="select reservation_number from reserve_status where plate_id='".$car_id."' and ((pickup_date between '".$pickup_date."' and '".$return_date."')
+        or (return_date between '".$pickup_date."' and '".$return_date."'))";
+        $res_check = $conn->query($query0);
+        $row_check = $res_check->fetch_assoc();
+        if($row_check == ""){
+            $query="Insert into reservation (reserve_date,user_id,plate_id) 
+            values(NOW(),'".$user_id."','".$car_id."')";
+            $query2="insert into car_status (plate_id,today,status,reserved) values ('".$car_id."','".$pickup_date."','active','YES')";
+            $query3="insert into car_status (plate_id,today,status,reserved) values ('".$car_id."','".$return_date."','active','NO')";
+            $res=$conn->query($query);
+            $res2=$conn->query($query2);
+            $res3=$conn->query($query3);
+            $query5="insert into reserve_status values ('".$car_id."',
+            (select reservation_number from reservation where user_id='".$user_id."' and plate_id='".$car_id."'),'".$pickup_date."','".$return_date."')";
+            $res5=$conn->query($query5);
+            echo "";
+        }
+        else{
+            echo "There is a reservation in this time interval";
+        }
+    }
+    if($f=="show_my_reservations"){
+        session_start();
+        $user_id=$_SESSION['user_id'];
+        $query="select * from reservation natural join car natural join reserve_status where user_id='".$user_id."' 
+        and reservation_number not in (select reservation_number from payment);";
         $res=$conn->query($query);
-        $res2=$conn->query($query2);
+        $html_res=show_reservations_customer($res,"user");
+        echo $html_res;
     }
     if($f=="payCar"){
         session_start();
         $method=$_POST['method'];
         $reservation_number=$_POST['reservation_number'];
         $user_name=$_SESSION['user_name'];
-        $query="select plate_id,user_id from reservation where reservation_number='".$reservation_number."'";
+        $query="select plate_id,user_id,return_date,pickup_date from reservation natural join reserve_status 
+        where reservation_number='".$reservation_number."'";
         $res=$conn->query($query);
         $row = $res->fetch_assoc();
         $plate_id = $row['plate_id'];
         $user_id = $row['user_id'];
-        echo $plate_id.$user_id;
+        $return_date = $row['return_date'];
+        $pickup_date = $row['pickup_date'];
+        $return_date = new DateTime($return_date);
+        $pickup_date = new DateTime($pickup_date);
+        $interval = $return_date->diff($pickup_date);
+        $interval = $interval->d;
         $query0="select price from car where plate_id='".$plate_id."'";
         $res=$conn->query($query0);
         $price = $res->fetch_assoc();
         $price = $price['price'];
         $query1="Insert into payment (reservation_number,user_id,payment_time,amount,method) values('".$reservation_number."',
-        '".$user_id."',NOW(),'".$price."','".$method."')";
+        '".$user_id."',NOW(),".($interval*$price).",'".$method."')";
         $res2=$conn->query($query1);
+        echo $res2;
     }
 ?>

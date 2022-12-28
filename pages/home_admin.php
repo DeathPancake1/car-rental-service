@@ -16,7 +16,7 @@
 <body>
     <div id="hidden_forms">
         <div id="addCarForm">
-            <form id="carForm">
+            <form id="carForm" method="POST">
                 <button class="close" onclick="hideForm('addCarForm')"></button>
                 <div class='formdiv'>
                     <label>Plate ID:</label><br>
@@ -35,7 +35,7 @@
             </form>
         </div>
         <div id="reservationWPCC">
-            <form id="reservationCCForm">
+            <form id="reservationCCForm" method="POST">
                 <button class="close" onclick="hideForm('reservationWPCC')"></button>
                 <div class="formdiv">
                     <label>start date:</label><br>
@@ -48,7 +48,7 @@
             </form>
         </div>
         <div id="reservationWPC">
-            <form id="reservationCForm">
+            <form id="reservationCForm" method="POST">
                 <button class="close" onclick="hideForm('reservationWPC')"></button>
                 <div class="formdiv">
                     <label>start date:</label><br>
@@ -62,7 +62,7 @@
             </form>
         </div>
         <div id="carStatus">
-            <form id="carStatusForm">
+            <form id="carStatusForm" method="POST">
                 <button class="close" onclick="hideForm('carStatus')"></button>
                 <div class="formdiv">
                     <label>Date:</label><br>
@@ -74,7 +74,7 @@
             </form>
         </div>
         <div id="customerReservation">
-            <form id="customerReservationForm">
+            <form id="customerReservationForm" method="POST">
                 <button class="close" onclick="hideForm('customerReservation')"></button>
                 <div class="formdiv">
                     <label>Customer ID:</label><br>
@@ -85,7 +85,7 @@
             </form>
         </div>
         <div id="updateStatus">
-            <form id="updateStatusForm">
+            <form id="updateStatusForm" method="POST">
                 <button class="close" onclick="hideForm('updateStatus')"></button>
                 <div class="formdiv">
                     <label>Plate ID:</label><br>
@@ -99,7 +99,7 @@
             </form>
         </div>
         <div id="dailyPayments">
-            <form id="dailyPaymentsForm">
+            <form id="dailyPaymentsForm" method="POST">
                 <button class="close" onclick="hideForm('dailyPayments')"></button>
                 <div class="formdiv">
                     <label>Start Date:</label><br> 
