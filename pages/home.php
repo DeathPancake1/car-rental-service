@@ -4,7 +4,7 @@
     $user_name = $_SESSION['user_name'];
     $conn=mysqli_connect('127.0.0.1','root','','car_rental');
     $query="select `year`,plate_id,model,price from car where plate_id in (Select plate_id from car_status where `status`='active' and reserved='NO'
-    and today in(select MAX(today) from car_status GROUP by plate_id) group by plate_id)";
+    and today in(select MAX(today) from car_status where today<=NOW() GROUP by plate_id) group by plate_id)";
     $res=$conn->query($query);
     $html_res=show_cars($res,"user");
     

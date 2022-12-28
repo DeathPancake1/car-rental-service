@@ -15,7 +15,7 @@ CREATE TABLE car_status(
     `status` varchar(50),
     reserved varchar(50),
     PRIMARY KEY (plate_id,today),
-     FOREIGN KEY (plate_id)  REFERENCES car(plate_id)
+    FOREIGN KEY (plate_id)  REFERENCES car(plate_id) ON DELETE CASCADE
 );
 
 CREATE TABLE `user`(
@@ -36,15 +36,13 @@ CREATE table admin(
     PRIMARY KEY (id)
 );
 CREATE TABLE reservation(
-	reserve_date date,
-    pickup_date date,
-    return_date date,
+	reserve_date datetime,
     user_id int NOT null,
-    reservation_number int NOT null AUTO_INCREMENT,
+    reservation_number int NOT null AUTO_INCREMENT unique,
     plate_id varchar(50) NOT null,
     PRIMARY KEY(user_id,plate_id),
-    FOREIGN KEY (plate_id)  REFERENCES car(plate_id),
-    FOREIGN KEY (user_id )REFERENCES user(user_id)
+    FOREIGN KEY (plate_id)  REFERENCES car(plate_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id )REFERENCES user(user_id) ON DELETE CASCADE
 );
 CREATE TABLE payment(
     reservation_number int NOT null AUTO_INCREMENT,
@@ -53,6 +51,17 @@ CREATE TABLE payment(
     amount varchar(100),
     method varchar(100),
     PRIMARY KEY(reservation_number,user_id),
-    FOREIGN KEY (reservation_number)  REFERENCES reservation(reservation_number),
-    FOREIGN KEY (user_id,plate_id )  REFERENCES reservation(user_id,plate_id)
+    FOREIGN KEY (reservation_number)  REFERENCES reservation(reservation_number) ON DELETE CASCADE,
+    FOREIGN KEY (user_id )  REFERENCES reservation(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE reserve_status(
+    plate_id varchar(50) NOT NULL,
+    reservation_number int NOT null,
+    pickup_date datetime,
+    return_date datetime,
+    PRIMARY KEY (plate_id,reservation_number),
+    FOREIGN KEY (plate_id,pickup_date)  REFERENCES car_status(plate_id,today) ON DELETE CASCADE,
+    FOREIGN KEY (plate_id,return_date)  REFERENCES car_status(plate_id,today) ON DELETE CASCADE,
+    FOREIGN KEY (reservation_number)  REFERENCES reservation(reservation_number) ON DELETE CASCADE
 );

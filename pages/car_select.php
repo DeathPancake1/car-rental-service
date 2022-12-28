@@ -17,7 +17,7 @@
         }else{
             $query="select `year`,plate_id,model,price from car where (model='".$search."' or `year`='".$search."' 
             or plate_id='".$search."' or price='".$search."') and plate_id in (Select plate_id from car_status where `status`='active' and reserved='NO'
-            and today in(select MAX(today) from car_status GROUP by plate_id) group by plate_id)";
+            and today in(select MAX(today) from car_status where today<=NOW() GROUP by plate_id) group by plate_id)";
             $res=$conn->query($query);
             $html_res=show_cars($res,"user");  
         }
@@ -37,10 +37,10 @@
     }
     if($f=="searchReservation"){
         $search=$_POST['search'];
-        $query="select * from (reservation natural join user) natural join car where user_id='".$search."' 
+        $query="select * from ((reservation natural join user) natural join car) natural join reserve_status where user_id='".$search."' 
         or `name`='".$search."' or email='".$search."' or birthdate='".$search."' or license='".$search."'
         or model='".$search."' or `year`='".$search."' or plate_id='".$search."' or price='".$search."'
-        or reserve_date='".$search."'";
+        or reserve_date='".$search."' or pickup_date='".$search."' or return_date='".$search."' or reservation_number='".$search."'";
         $res=$conn->query($query);
         $html_res=show_reservations($res);
         echo $html_res;
@@ -60,7 +60,8 @@
     if($f=="searchByStartEnd"){
         $startdate=$_POST['startdate'];
         $enddate=$_POST['enddate'];
-        $query="select * from reservation natural join user natural join car where reserve_date between '".$startdate."' and '".$enddate."'";
+        $query="select * from reservation natural join user natural join car natural join reserve_status where reserve_date between 
+        '".$startdate."' and '".$enddate."'";
         $res=$conn->query($query);
         $html_res=show_reservations($res);
         echo $html_res;
@@ -70,23 +71,26 @@
         $query0="select plate_id from reservation where reservation_number='".$id."'";
         $res0=$conn->query($query0);
         $row = $res0->fetch_assoc();
-        $row = $row['plate_id'];
+        $plate_id = $row['plate_id'];
+        $query3="delete from car_status where plate_id='".$plate_id."' and today in 
+        ((select pickup_date from reserve_status where reservation_number='".$id."')union
+        (select return_date from reserve_status where reservation_number='".$id."'))";
+        $res3=$conn->query($query3);
         $query="delete from reservation where reservation_number='".$id."'";
         $res1=$conn->query($query);
-        $query2="insert into car_status (plate_id,today,`status`,reserved) values('".$row."',NOW(),'active','NO')";
-        $res2=$conn->query($query2); 
     }
     if($f=="searchByStartEndCustomer"){
         $startdate=$_POST['startdate'];
         $enddate=$_POST['enddate'];
-        $query="select * from reservation natural join car where reserve_date between '".$startdate."' and '".$enddate."'";
+        $query="select * from reservation natural join car natural join reserve_status where reserve_date between '".$startdate."' and '".$enddate."'";
         $res=$conn->query($query);
         $html_res=show_reservations_customer($res);
         echo $html_res;
     }
     if($f=="carStatusDay"){
         $day=$_POST['day'];
-        $query="Select plate_id,reserved,`status`,model,price,`year` from car_status natural join car where today in(select MAX(today) from car_status where today<='".$day."' GROUP by plate_id) group by plate_id";
+        $query="Select plate_id,reserved,`status`,model,price,`year` from car_status natural join car where today 
+        in(select MAX(today) from car_status where today<='".$day."' GROUP by plate_id) group by plate_id";
         $res=$conn->query($query);
         $html_res=show_car_status($res);
         echo $html_res;
@@ -98,7 +102,7 @@
     }
     if($f=="customerReservation"){
         $id=$_POST['id'];
-        $query="Select * from reservation natural join car natural join user where user_id= '".$id."'";
+        $query="Select * from reservation natural join car natural join user natural join reserve_status where user_id= '".$id."'";
         $res=$conn->query($query);
         $html_res=show_reservations_customer($res);
         echo $html_res;
