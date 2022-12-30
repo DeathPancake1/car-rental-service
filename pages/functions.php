@@ -4,7 +4,7 @@
         while($row = mysqli_fetch_array($res)) {
             $delete='';
             if($type=="admin"){
-                $delete ="<br><input type='button' value='Delete' class='car_action' onclick='deleteCar(event)'>";
+                $delete ="<br><input type='button' value='Show car' class='car_action' onclick='showAdminCar(event)'>";
             }
             else{
                 $click="showForm(event,`reservation`)";
@@ -13,23 +13,46 @@
             $html_res .= "<div id=".$row['plate_id']." class='car_div'>".
                             "<img class='car_img' src='../car_images/".$row['plate_id'].".png'/>".
                             "<div>".
-                                "<label class='car_label'>"."Plate ID" .'</label><br>'.
-                                "<label class='car_plate_id car_label_value'>".$row['plate_id'] .'</label>'.
-                            "</div>".
-                            "<div>".
-                                "<label class='car_label'>"."Year" .'</label><br>'.
-                                "<label class='car_year car_label_value'>".$row['year'] .'</label>'.
-                            "</div>".
-                            "<div>".
-                                "<label class='car_label'>"."Model" .'</label><br>'.
                                 "<label class='car_model car_label_value'>".$row['model'] .'</label>'.
                             "</div>".
                             "<div>".
-                                "<label class='car_label'>"."Price" .'</label><br>'.
-                                "<label class='car_price car_label_value'>".$row['price'] .'</label>'.
+                                "<label class='car_label'>"."Price:" .'</label>'.
+                                "<label class='car_price car_label_value'>".$row['price'] ."LE".'</label>'.
                             "</div>".
                 $delete."</div><br>";
         }
+        return $html_res;
+    }
+    function show_car($res,$type){
+        $html_res = "";
+        $delete='';
+        if($type=="admin"){
+            $delete ="<br><input type='button' value='Delete' class='car_action' onclick='deleteCarPlateId(".$res['plate_id'].")'>";
+        }
+        else{
+            $click="showForm(event,`reservation`)";
+            $delete="<br><input type='button' value='Reserve' class='car_action' onclick='".$click."'>";
+        }
+        $html_res .= "<div id=".$res['plate_id']." class='car_div'>".
+                            "<button class='close' onclick='hideForm(`showCar`)'></button>".
+                            "<img class='car_img' src='../car_images/".$res['plate_id'].".png'/>".
+                            "<div id='plateDiv'>".
+                                "<label class='car_label'>"."Plate ID:" .'</label>'.
+                                "<label class='car_plate_id car_label_value'>".$res['plate_id'] .'</label>'.
+                            "</div>".
+                            "<div id='yearDiv'>".
+                                "<label class='car_label'>"."Year:" .'</label>'.
+                                "<label class='car_year car_label_value'>".$res['year'] .'</label>'.
+                            "</div>".
+                            "<div id='modelDiv'>".
+                                "<label class='car_label'>"."Model:" .'</label>'.
+                                "<label class='car_model car_label_value'>".$res['model'] .'</label>'.
+                            "</div>".
+                            "<div id='priceDiv'>".
+                                "<label class='car_label'>"."Price:" .'</label>'.
+                                "<label class='car_price car_label_value'>".$res['price'] .'</label>'.
+                            "</div>".
+                $delete."</div><br>";
         return $html_res;
     }
     function show_users($res){

@@ -5,7 +5,7 @@
     margin:0;
   }
   body{
-    background-color: #F9F9F9;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);    
     font-family: 'Ubuntu', sans-serif;
   }
   input[type=button]{
@@ -34,25 +34,39 @@
 .searchbuttons{
     width:32%;
     height:3rem;
-    background-color: rgb(18, 34, 57);;
+    background: linear-gradient(90deg, rgba(67,66,78,1) 0%, rgba(48,46,71,1) 100%);
     border-style:none ;
     border-radius: 0.2rem;
     cursor: pointer;
     color: white;
+    transition:0.5s;
+}
+.searchbuttons:active , .searchbuttons:hover{
+    background: linear-gradient(90deg, rgb(164, 164, 169) 0%, rgb(133, 129, 171) 0%);
+    transition:0.5s;
+    color: black;
 }
 #firstfourbutns{
     width:95%;
     margin: auto;
 }
 .foursearch{
-    width:24%;
+    width:25%;
     height:3rem;
-    background-color: rgb(18, 34, 57);;
-    border-style:none ;
-    border-radius: 0.2rem;
+    background-color: rgba(0, 0, 0, 0.07);
+    border-style:soid ;
+    border-width: 0px 0px 0px 0px;
     cursor: pointer;
     text-align: center;
     color:white;
+    border-color: rgba(104, 104, 104, 0.593);
+    transition: 0.5s;
+    font-weight: bold;
+}
+.foursearch:active ,.foursearch:hover{
+    background-color: #8A3506;
+    transition: 0.5s;
+    
 }
 #fooall{
     position:fixed;
@@ -64,12 +78,14 @@
     background-color: black;
 }
 #results{
-    border-style: solid;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width:70%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 15px;
+    margin:auto;
+    margin-bottom: 4rem;
 }
+
 #hidden_forms > div{
     position: fixed;
     display: none;
@@ -79,10 +95,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.922);
     align-items: center;
     overflow-y: scroll;
 }
+
 form{
     z-index: 2;
     position: absolute;
@@ -93,7 +110,7 @@ form{
     top:20%;
     width:100%;
     margin: auto;
-    background-color: #F9F9F9;
+    background:linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);     ;
     font-size: 1.1rem;
     font-weight: bold;
     min-width: 450px;
@@ -102,6 +119,7 @@ form{
     border-radius: 10px;
     border: solid transparent;
 }
+
 .formdiv{
     margin:auto;
     padding-bottom: 1.5rem;
@@ -117,6 +135,7 @@ form{
     top: 0;
     margin-top: 0.2em;
     margin-left: 0.2em;
+    margin-bottom: 0.4em;
     background: url(../icons/x_icon.svg) no-repeat top left;
     display: block;
     width: 2em;
@@ -124,4 +143,83 @@ form{
     background-size: contain;
     cursor: pointer;
     border: none;
+}
+#showCar > .car_div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    z-index: 2;
+    position: absolute;
+    top:20%;
+    width:100%;
+    margin: auto;
+    background-color: #F9F9F9;
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-width: 450px;
+    overflow:auto;
+    border-width: 5px;
+    border-radius: 10px;
+    border: solid transparent;
+    
+}
+#showCar > .car_div> .car_img{
+    grid-column-start:1 ;
+    grid-column-end:2 ;
+    grid-row-start: 1;
+    grid-row-end: 6;
+    width:100%;
+    height:50vh;
+}
+#showCar > .car_div> #plateDiv{
+    grid-column-start:2 ;
+    grid-column-end:3 ;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#showCar > .car_div> #yearDiv{
+    grid-column-start:2 ;
+    grid-column-end:3 ;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#showCar > .car_div> #modelDiv{
+    grid-column-start:2 ;
+    grid-column-end:3 ;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#showCar > .car_div> #priceDiv{
+    grid-column-start:2 ;
+    grid-column-end:3 ;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#showCar > .car_div> .car_action{
+    grid-column-start:2 ;
+    grid-column-end:3 ;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    width:50%;
+    margin:auto;
+}
+#modelDiv> .car_model{
+    font-size:1.2rem;
+    font-weight: normal;
+}
+#menu{
+    display: flex;
+    margin-bottom: 1.4rem;
 }

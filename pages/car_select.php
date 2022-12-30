@@ -23,6 +23,23 @@
         }
         echo $html_res;
     }
+    if($f=="searchCarByPlateID"){
+        $id=$_POST['id'];
+        $u = $_GET["u"];
+        if($u=="admin"){
+            $query="select * from car where plate_id='".$id."'";
+            $res=$conn->query($query);
+            $res=$res->fetch_assoc();  
+            $html_res=show_car($res,'admin');  
+        }else{
+            $query="select `year`,plate_id,model,price from car where plate_id='".$id."' and plate_id in (Select plate_id from car_status where `status`='active'
+            and today in(select MAX(today) from car_status where today<=NOW() GROUP by plate_id) group by plate_id)";
+            $res=$conn->query($query);
+            $res=$res->fetch_assoc();  
+            $html_res=show_car($res,'user');
+        }
+        echo $html_res;
+    }
     if($f=="searchUser"){
         $search=$_POST['search'];
         $query="select * from user where user_id='".$search."' or `name`='".$search."' or email='".$search."' or birthdate='".$search."' or license='".$search."'";

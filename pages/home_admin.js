@@ -25,6 +25,34 @@ function deleteCar(e){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
+function deleteCarPlateId(plate_id){
+    var elem_id=plate_id;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+            document.getElementById(elem_id).remove();
+            document.getElementById('showCar').style="none";
+    }
+    var querystr="id="+elem_id;
+    xmlhttp.open("POST","car_select.php?f=deleteCar",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}
+function showAdminCar(e){
+    e = e || window.event;
+    var elem_id=e.target.parentElement.id;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById('showCar').style.display='block';
+            document.getElementById('showCar').innerHTML=xmlhttp.responseText.trim();
+        }
+    }
+    var querystr="id="+elem_id;
+    xmlhttp.open("POST","car_select.php?f=searchCarByPlateID&u=admin",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+
+}
 function userSearch(){
     var search_bar = document.getElementById("mainsearch").value;
     var xmlhttp=new XMLHttpRequest();

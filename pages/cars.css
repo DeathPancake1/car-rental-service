@@ -1,37 +1,41 @@
-.car_div,.user_div,.reservation_div,.car_status_div,.payment_div{
-    display: flex;
-    flex-direction: row;
+.user_div,.reservation_div,.car_status_div,.payment_div{
     background-color:#eeeeee;
     border: solid transparent 1px;
     border-radius: 10px;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 1rem;
 }
-.car_img,.user_img,.car_status_img{
-    width: 16rem;
-    height: 10rem;
-}
-.car_div > div ,.user_div > div,.reservation_div > div,.car_status_div > div .payment_div > div{
-    padding: 1rem;
+.reservation_div{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+}
+.car_status_div{
+    display: flex;
+}
+.car_img,.user_img,.car_status_img{
+    width: 18rem;
+    height: 14rem;
+}
+ .user_div > div,.reservation_div > div,.car_status_div > div .payment_div > div{
+    padding: 1rem;
 }
 .reservation_div > div{
     padding: 1%;
 }
-.car_div .car_label,.user_div .user_label,.car_status_div .car_status_label,.payment_div .payment_label{
-    font-size: 2rem;
+ .car_label,.user_div .user_label,.car_status_div .car_status_label,.payment_div .payment_label{
+    font-size: 1.2rem;
     font-weight: bold;
+
 }
 .reservation_div .reservation_label{
     font-size: 120%;
     font-weight: bold;
 }
-.car_div .car_label_value,.user_div .user_label_value,.car_status_div .car_status_label_value,.payment_div .payment_label_value{
-    font-size: 1.5rem;
+ .car_label_value,.user_div .user_label_value,.car_status_div .car_status_label_value,.payment_div .payment_label_value{
+    font-size: 1.2rem;
+
+}
+.car_model{
+    font-size: 1.8rem;
+    font-weight: bolder;
 }
 .reservation_div .reservation_label_value{
     font-size: 120%;
@@ -39,5 +43,24 @@
 .car_action,.user_action,.reservation_action .status_action{
     height: 3rem;;
     font-size: 1.3rem;
-    font-weight: bold;
+    width:100%;
+    border-width: 0px 0px 0px 0px;
+    background:linear-gradient(90deg, rgba(67,66,78,1) 0%, rgba(48,46,71,1) 100%);
+    transition:0.5s;
+    border-radius: 0.1rem;
+    color:white;
+}
+.car_action active, .car_action:hover{
+    background:linear-gradient(90deg, rgb(164, 164, 169) 0%, rgb(133, 129, 171) 0%);
+    cursor: pointer;
+}
+.car_div{
+    width:100%;
+ background-color:#eeeeee;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.6rem;
+    border-radius: 0.5rem;
 }
