@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 #bg {
-  background-image: url('../Black and White Modern Company Presentation (6).jpg');
+  background-image: url('../Blue Red Minimalist Modern Automotive Youtube Channel Art.jpg');
   position: fixed;
   left: 0;
   top: 0;
@@ -10,16 +10,21 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
-  color: #eff2e9;
-  display: flex;
-  justify-content: right;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-family: 'Ubuntu', sans-serif;  color: #eff2e9;
   min-height: 100vh;
   overflow: hidden;
   margin: 0;
   padding: 0;
 }
+
+#loginform{
+  top: 200px;
+  grid-column: 3;
+}
+
 
 form {
   width: 350px;
@@ -51,10 +56,9 @@ form .form-field {
   position: relative;
 }
 .fields{
-  font-family: inherit;
-  width: 100%;
+  font-family: 'Ubuntu', sans-serif;  width: 100%;
   outline: none;
-  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);  border: none;
+  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #ffffff 100%);  border: none;
   display: block;
   padding: 0.9rem 0.7rem;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
@@ -64,15 +68,13 @@ form .form-field {
 }
 .buttons{
   align-items: center;
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
   border: 0;
   border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
+    box-sizing: border-box;
   color: #FFFFFF;
+  background-image:linear-gradient(62deg, #e7986a 0%, #d27122 100%);
   display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 15px;
+  font-family: 'Ubuntu', sans-serif;  font-size: 15px;
   justify-content: center;
   line-height: 1em;
   max-width: 100%;
@@ -98,6 +100,8 @@ form .form-field {
 .buttons:active,
 .buttons:hover {
   outline: 0;
+  background-image:linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+
 }
 
 .buttons:hover span {
@@ -128,8 +132,7 @@ form .btn {
 
 label {
 
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.0625rem;
+  font-family: 'Ubuntu', sans-serif;  font-size: 1.0625rem;
   font-weight: 900;
   letter-spacing: 0.05rem;
   font-style: normal;
@@ -141,3 +144,5 @@ label {
   padding: 0.375rem 0.4rem;
   
   }
+
+  

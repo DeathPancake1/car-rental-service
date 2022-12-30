@@ -135,7 +135,7 @@
     </div>
     <br>
     <div id="results"></div>
-    <div id="fooall">
+    <div id="fooall" style="background: linear-gradient(90deg, rgba(67,66,78,1) 0%, rgba(48,46,71,1) 100%);">
         <h1 style="grid-area:x;text-align:center;color:white;">VROOM</h1>
         <a style="position:absolute;bottom:25%;grid-area:n;color:white;text-decoration:none;" href='logout.php'>Logout</a>
 

@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 #bg {
-  background-image: url('../Black and White Modern Company Presentation (4).jpg');
-
+  background-image: linear-gradient(to top, #1c075d 0%, #6a1518 1%, #0e084c 100%); 
   position: fixed;
   left: 0;
   top: 0;
@@ -10,8 +9,13 @@
   background-size: cover;
 }
 
+.signuplabel{
+  color: black;
+  font-size: x-large;
+}
+
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   color: #4A4A4A;
   display: flex;
   justify-content: center;
@@ -22,30 +26,50 @@ body {
   padding: 0;
 }
 .buttons{
-    align-items: center;
-    background-image: linear-gradient(144deg,#AF40FF, #140f35 50%,#00DDEB);
-	color: white;
-	border-style: outset;
-	border-color: #0066A2;
-	height: 50px;
-	display: flex;
-    font-family: Phantomsans, sans-serif;
-    font-size: 15px;
-    justify-content: center;
-    line-height: 1em;
-    max-width: 100%;
-    min-width: 140px;
-    padding: 3px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 1.0625rem;
-    font-weight: 900;
-	font: bold15px arial,sans-serif;
-	text-shadow: none;
+  align-items: center;
+  border: 0;
+  border-radius: 8px;
+    box-sizing: border-box;
+  color: #FFFFFF;
+  background-image:linear-gradient(62deg, #e7986a 0%, #d27122 100%);
+  display: flex;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  justify-content: center;
+  line-height: 2em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  }
+  .buttons span{
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+  }
+  
+  .buttons:active,
+  .buttons:hover {
+    outline: 0;
+    background-image:linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  
+  }
+  
+  .buttons:hover span {
+    background: none;
   }
 
   label {
 
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 1.0625rem;
     font-weight: 900;
     letter-spacing: 0.05rem;
@@ -62,45 +86,21 @@ form {
   width: 350px;
   position: relative;
 }
-form .form-field::before {
-  font-size: 20px;
-  position: absolute;
-  left: 15px;
-  top: 17px;
-  color: #2e2c2c;
-  content: " ";
-  display: block;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 
-form .form-field {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 1rem;
-  position: relative;
-}
 .fields{
-    font-family: inherit;
-    width: 100%;
-    outline: none;
-    background-image: linear-gradient(to top, #636168 0%, #dad4ec 1%, #8492b7 100%);  border: none;
-    display: block;
-    padding: 0.9rem 0.7rem;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-    font-size: 17px;
-    color: #040404;
-    text-indent: 40px;
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  outline: none;
+  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #ffffff 100%);  border: none;
+  display: block;
+  padding: 0.9rem 0.7rem;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  font-size: 17px;
+  color: #4A4A4A;
+  text-indent: 40px;
   }
 form input {
-  font-family: inherit;
+  font-family: 'Ubuntu', sans-serif;
   width: 100%;
   outline: none;
   background-color: rgb(72, 69, 69);
@@ -112,18 +112,4 @@ form input {
   font-size: 17px;
   color: #4A4A4A;
   text-indent: 40px;
-}
-form .btn {
-  outline: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 auto;
-  padding: 0.9rem 2.5rem;
-  text-align: center;
-  background-color: #47AB11;
-  color: #fff;
-  border-radius: 4px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  font-size: 17px;
 }

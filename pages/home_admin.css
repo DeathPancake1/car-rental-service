@@ -4,8 +4,9 @@
     padding:0;
     margin:0;
   }
+  
   body{
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);    
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);     
     font-family: 'Ubuntu', sans-serif;
   }
   input[type=button]{
