@@ -89,9 +89,12 @@
         $res0=$conn->query($query0);
         $row = $res0->fetch_assoc();
         $plate_id = $row['plate_id'];
-        $query3="delete from car_status where plate_id='".$plate_id."' and today in 
-        ((select pickup_date from reserve_status where reservation_number='".$id."')union
-        (select return_date from reserve_status where reservation_number='".$id."'))";
+        $query0="select pickup_date,return_date from reserve_status where reservation_number='".$id."'";
+        $res0=$conn->query($query0);
+        $row = $res0->fetch_assoc();
+        $pickup_date = $row['pickup_date'];
+        $return_date = $row['return_date'];
+        $query3="delete from car_status where plate_id='".$plate_id."' and today in ('".$pickup_date."','".$return_date."')";
         $res3=$conn->query($query3);
         $query="delete from reservation where reservation_number='".$id."'";
         $res1=$conn->query($query);
@@ -158,7 +161,8 @@
             $res2=$conn->query($query2);
             $res3=$conn->query($query3);
             $query5="insert into reserve_status values ('".$car_id."',
-            (select reservation_number from reservation where user_id='".$user_id."' and plate_id='".$car_id."'),'".$pickup_date."','".$return_date."')";
+            (select reservation_number from reservation where user_id='".$user_id."' and plate_id='".$car_id."' order by reserve_date desc limit 1),
+            '".$pickup_date."','".$return_date."')";
             $res5=$conn->query($query5);
             echo "";
         }
@@ -192,6 +196,9 @@
         $pickup_date = new DateTime($pickup_date);
         $interval = $return_date->diff($pickup_date);
         $interval = $interval->d;
+        if($interval==0){
+            $interval = 1;
+        }
         $query0="select price from car where plate_id='".$plate_id."'";
         $res=$conn->query($query0);
         $price = $res->fetch_assoc();

@@ -51,8 +51,7 @@ CREATE TABLE payment(
     amount varchar(100),
     method varchar(100),
     PRIMARY KEY(reservation_number,user_id),
-    FOREIGN KEY (reservation_number)  REFERENCES reservation(reservation_number) ON DELETE CASCADE,
-    FOREIGN KEY (user_id )  REFERENCES reservation(user_id) ON DELETE CASCADE
+    FOREIGN KEY (reservation_number,user_id)  REFERENCES reservation(reservation_number,user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE reserve_status(
