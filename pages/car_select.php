@@ -68,11 +68,17 @@
         $year=$_POST['year'];
         $status=$_POST['status'];
         $price=$_POST['price'];
-        echo $plate_id . $model . $year . $status . $price;
-        $query="insert into car (plate_id,model,`year`,price) values('".$plate_id."','".$model."','".$year."','".$price."')";
-        $query2="insert into car_status (plate_id,today,`status`,reserved) values('".$plate_id."',NOW(),'".$status."','NO')";
-        $res=$conn->query($query);
-        $res=$conn->query($query2);
+        $query0="select * from car where plate_id='".$plate_id."'";
+        $res=$conn->query($query0);
+        $row=$res->fetch_assoc();
+        if($row!=""){
+            echo "Already inserted";
+        }else{
+            $query="insert into car (plate_id,model,`year`,price) values('".$plate_id."','".$model."','".$year."','".$price."')";
+            $query2="insert into car_status (plate_id,today,`status`,reserved) values('".$plate_id."',NOW(),'".$status."','NO')";
+            $res=$conn->query($query);
+            $res=$conn->query($query2);
+        }
     }
     if($f=="searchByStartEnd"){
         $startdate=$_POST['startdate'];

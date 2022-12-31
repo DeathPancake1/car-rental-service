@@ -30,21 +30,30 @@ function hideForm(id){
 function reserveCar(){
     var pickup_date = document.forms["reservationForm"]["pickup_date"].value;
     var return_date = document.forms["reservationForm"]["return_date"].value;
-    var xmlhttp=new XMLHttpRequest();
-    xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState == 4 ) {
-            var result=xmlhttp.responseText.trim();
-            if(result!=""){
-                document.getElementById("reserve_result").innerHTML=result;
-            }else{
-                hideForm("reservation");
+    var pick_d = new Date(pickup_date);
+    var ret_d = new Date(return_date);
+    if(pickup_date==""||return_date==""){
+        document.getElementById("reserve_result").innerHTML="Insert Correct info";
+    }else if(pick_d > ret_d){
+        document.getElementById("reserve_result").innerHTML="Insert Correct dates";
+    }
+    else{
+        var xmlhttp=new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function(){
+            if (xmlhttp.readyState == 4 ) {
+                var result=xmlhttp.responseText.trim();
+                if(result!=""){
+                    document.getElementById("reserve_result").innerHTML=result;
+                }else{
+                    hideForm("reservation");
+                }
             }
         }
+        var querystr="id="+car_id+"&pickup_date="+pickup_date+"&return_date="+return_date;
+        xmlhttp.open("POST","car_select.php?f=reserveCar",true);
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send(querystr);
     }
-    var querystr="id="+car_id+"&pickup_date="+pickup_date+"&return_date="+return_date;
-    xmlhttp.open("POST","car_select.php?f=reserveCar",true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send(querystr);
 }
 function showRes(){
     var xmlhttp=new XMLHttpRequest();

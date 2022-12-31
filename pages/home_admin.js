@@ -121,18 +121,29 @@ function addcar(){
     var model = document.forms["carForm"]["model"].value;
     var year = document.forms["carForm"]["year"].value;
     var price = document.forms["carForm"]["price"].value;
-    console.log(plate_id+model+year+price+status);
-    var xmlhttp=new XMLHttpRequest();
-    xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState == 4 ) {
-            console.log(xmlhttp.responseText.trim());
-            hideForm("addCarForm");
-        }
+    if(plate_id=="" || status=="" || model=="" || year=="" || price==""){
+        return false;
+    }else if(status != "active" && status!="out of service"){
+        console.log("active or out of service");
+        return;
     }
-    var querystr="plate_id="+plate_id+"&model="+model+"&year="+year+"&price="+price+"&status="+status;
-    xmlhttp.open("POST","car_select.php?f=carAdd",true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send(querystr);
+    else{
+        console.log(plate_id+model+year+price+status);
+        var xmlhttp=new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function(){
+            if (xmlhttp.readyState == 4 ) {
+                if(xmlhttp.responseText.trim()=="Already inserted"){
+                    console.log(xmlhttp.responseText.trim());
+                }else{
+                    hideForm("addCarForm");
+                }
+            }
+        }
+        var querystr="plate_id="+plate_id+"&model="+model+"&year="+year+"&price="+price+"&status="+status;
+        xmlhttp.open("POST","car_select.php?f=carAdd",true);
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send(querystr);
+    }
 }
 function searchByStartEnd(){
     var startdate = document.forms["reservationCCForm"]["startdate"].value;
@@ -206,6 +217,18 @@ function updateStatus(){
     var status = document.forms["updateStatusForm"]["status"].value;
     var reserved = document.forms["updateStatusForm"]["reserved"].value;
     var plate_id = document.forms["updateStatusForm"]["plate_id"].value;
+    if(status == "" || reserved =="" || plate_id==""){
+        console.log("Insert Correct info");
+        return;
+    }
+    if(status != "active" && status!="out of service"){
+        console.log("active or out of service");
+        return;
+    }
+    if(reserved != "NO" && reserved!="YES"){
+        console.log("YES or NO");
+        return;
+    }
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState == 4 ) {
