@@ -15,23 +15,15 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="cars.css">
     <link rel="stylesheet" href="home_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-<div id="bg"></div>
-    <div id="reservation" style="
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        cursor: pointer;"
-    >
+<div id="hidden_forms">
+    <div id="showCar">
+        
+    </div>
+    <div id="reservation">
         <form id="reservationForm" method="POST">
             <button class="close" onclick="hideForm('reservation')"></button>
             <label>Pickup date:</label>
@@ -42,19 +34,7 @@
             <label id="reserve_result"></label>
         </form>
     </div>
-    <div id="payment" style="
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        cursor: pointer;"
-    >
+    <div id="payment">
         <form id="paymentForm" method="POST">
             <button class="close" onclick="hideForm('payment')"></button>
             <label>Payment Method:</label>
@@ -62,24 +42,23 @@
             <div id="payment_result"></div>
         </form>
     </div>
-    <div class="label">
+</div>
+<div id="navbar">
+    <a class="label">
         <img src="../Profile-PNG-Clipart.png" width="40" height="35" class="image">
         <label id='user_id'><?php echo $user_name; ?></label>
+    </a>
+    <a id="searchBara"><input type='text' name='search' placeholder='Search' id="searchBar">
+    <button onclick="carsearch()"><i class="fa fa-search"></i></button>
+    </a>
+    <a id="amgedid"><input type="button" value='Payments'class="btn" onclick="showForm(event,'payment');showRes()"></a>
     </div>
-
-    <div class="search">
-        <input type='text'class="fields" name='search' placeholder='search' id="search_bar">
-        <!-- <img src="../download.png" width="40" height="35" class="image" onclick="carSearch()"> -->
-        <input type="button" value='go'class="button" onclick="carSearch()">
-        <input type="button" value='Pay'class="button" onclick="showForm(event,'payment');showRes()">
-    </div>
-
-    <div id="cars"><?php echo $html_res; ?></div>
+    <div id="results"><?php echo $html_res; ?></div>
     <div id="fooall" style="background: linear-gradient(90deg, rgba(67,66,78,1) 0%, rgba(48,46,71,1) 100%);">
         <h1 style="grid-area:x;text-align:center;color:white;">VROOM</h1>
         <a style="position:absolute;bottom:25%;grid-area:n;color:white;text-decoration:none;" href='logout.php'>Logout</a>
-
     </div>
 
     <script src='home.js'></script>
+    <script src='home_admin.js'> </script>
 </body>

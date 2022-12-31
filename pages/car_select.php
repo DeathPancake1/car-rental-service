@@ -9,7 +9,7 @@
     }
     if($f=="searchCar"){
         $search=$_POST['search'];
-        $u = $_GET["u"];
+        $u = $_GET['u'];
         if($u=="admin"){
             $query="select * from car where model='".$search."' or `year`='".$search."' or plate_id='".$search."' or price='".$search."'";
             $res=$conn->query($query);

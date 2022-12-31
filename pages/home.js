@@ -1,10 +1,10 @@
 var car_id;
-function carSearch(){
-    var search_bar = document.getElementById("search_bar").value;
+function carsearch(){
+    var search_bar = document.getElementById("searchBar").value;
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState == 4 ) {
-            document.getElementById("cars").innerHTML=xmlhttp.responseText.trim();
+            document.getElementById("results").innerHTML=xmlhttp.responseText.trim();
         }
     }
     var querystr="search="+search_bar;
@@ -18,10 +18,10 @@ function showForm(e,id){
     var element = document.getElementById(id);
     element.style.display="block";
 }
-function hideForm(id){
-    car_id=0;
+function showFormUser(plate_id,id){
+    car_id=plate_id;
     var element = document.getElementById(id);
-    element.style.display="none";
+    element.style.display="block";
 }
 function reserveCar(){
     var pickup_date = document.forms["reservationForm"]["pickup_date"].value;

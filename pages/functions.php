@@ -7,8 +7,8 @@
                 $delete ="<br><input type='button' value='Show car' class='car_action' onclick='showAdminCar(event)'>";
             }
             else{
-                $click="showForm(event,`reservation`)";
-                $delete="<br><input type='button' value='Reserve' class='car_action' onclick='".$click."'>";
+                $click="showUserCar(event)";
+                $delete="<br><input type='button' value='Show car' class='car_action' onclick='".$click."'>";
             }
             $html_res .= "<div id=".$row['plate_id']." class='car_div'>".
                             "<img class='car_img' src='../car_images/".$row['plate_id'].".png'/>".
@@ -30,7 +30,7 @@
             $delete ="<br><input type='button' value='Delete' class='car_action' onclick='deleteCarPlateId(".$res['plate_id'].")'>";
         }
         else{
-            $click="showForm(event,`reservation`)";
+            $click="hideForm(`showCar`);showFormUser(".$res['plate_id'].",`reservation`);";
             $delete="<br><input type='button' value='Reserve' class='car_action' onclick='".$click."'>";
         }
         $html_res .= "<div id=".$res['plate_id']." class='car_div'>".

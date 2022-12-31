@@ -145,6 +145,7 @@ form{
     cursor: pointer;
     border: none;
 }
+
 #showCar > .car_div{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -154,7 +155,7 @@ form{
     top:20%;
     width:100%;
     margin: auto;
-    background-color: #F9F9F9;
+    background:linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
     font-size: 1.1rem;
     font-weight: bold;
     min-width: 450px;
