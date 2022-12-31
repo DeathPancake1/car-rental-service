@@ -40,7 +40,7 @@ CREATE TABLE reservation(
     user_id int NOT null,
     reservation_number int NOT null AUTO_INCREMENT unique,
     plate_id varchar(50) NOT null,
-    PRIMARY KEY(user_id,plate_id),
+    PRIMARY KEY(user_id,plate_id,reserve_date),
     FOREIGN KEY (plate_id)  REFERENCES car(plate_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id )REFERENCES user(user_id) ON DELETE CASCADE
 );
