@@ -60,5 +60,4 @@
     </div>
 
     <script src='home.js'></script>
-    <script src='home_admin.js'> </script>
 </body>

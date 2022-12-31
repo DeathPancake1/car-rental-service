@@ -23,6 +23,10 @@ function showFormUser(plate_id,id){
     var element = document.getElementById(id);
     element.style.display="block";
 }
+function hideForm(id){
+    var element = document.getElementById(id);
+    element.style.display="none";
+}
 function reserveCar(){
     var pickup_date = document.forms["reservationForm"]["pickup_date"].value;
     var return_date = document.forms["reservationForm"]["return_date"].value;
@@ -66,6 +70,21 @@ function pay(e){
     }
     var querystr="method="+method+"&reservation_number="+reservation_number;
     xmlhttp.open("POST","car_select.php?f=payCar",true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(querystr);
+}
+function showUserCar(e){
+    e = e || window.event;
+    var elem_id=e.target.parentElement.id;
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 ) {
+            document.getElementById('showCar').style.display='block';
+            document.getElementById('showCar').innerHTML=xmlhttp.responseText.trim();
+        }
+    }
+    var querystr="id="+elem_id;
+    xmlhttp.open("POST","car_select.php?f=searchCarByPlateID&u=user",true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(querystr);
 }
